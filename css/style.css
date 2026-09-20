@@ -190,15 +190,143 @@ em {
 
 .mobile-toggle-btn {
   display: none;
-  background: none;
-  border: 1px solid var(--border-delicate);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-delicate);
   border-radius: var(--radius-pill);
   padding: 6px 14px;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-ink);
   cursor: pointer;
+  transition: all var(--ease-natural);
+  white-space: nowrap;
+}
+
+.mobile-toggle-btn:hover,
+.mobile-toggle-btn:active {
+  background: var(--text-ink);
+  color: #FFFFFF;
+  border-color: var(--text-ink);
+}
+
+/* ==========================================================================
+   Mobile Exhibition Quick Drawer
+   ========================================================================== */
+
+.mobile-chapter-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.mobile-chapter-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-inner-links {
+  width: 86%;
+  max-width: 360px;
+  height: 100%;
+  background: var(--bg-canvas);
+  border-left: 1px solid var(--border-delicate);
+  padding: 24px 20px 48px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  box-shadow: -10px 0 36px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mobile-chapter-drawer.open .drawer-inner-links {
+  transform: translateX(0);
+}
+
+.drawer-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border-delicate);
+}
+
+.drawer-header-line span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+}
+
+#close-mobile-drawer {
+  background: var(--bg-muted);
+  border: 1px solid var(--border-delicate);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 0.9rem;
+  color: var(--text-ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+#close-mobile-drawer:hover,
+#close-mobile-drawer:active {
+  background: var(--accent-terracotta);
+  color: #FFFFFF;
+  border-color: var(--accent-terracotta);
+}
+
+.mobile-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mobile-pill span {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--accent-terracotta);
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.mobile-pill:hover,
+.mobile-pill:active {
+  border-color: var(--accent-terracotta);
+  background: rgba(141, 81, 25, 0.05);
+  color: var(--accent-terracotta);
+  transform: translateX(3px);
+}
+
+.mobile-pill-map {
+  background: rgba(141, 81, 25, 0.07);
+  border-color: rgba(141, 81, 25, 0.2);
+  margin-bottom: 4px;
 }
 
 /* ==========================================================================
@@ -1015,6 +1143,7 @@ em {
 
 .exhibition-chapter {
   padding: 96px 0 108px 0;
+  scroll-margin-top: 72px;
   transition: background-color 0.4s ease;
 }
 
@@ -2373,14 +2502,37 @@ em {
    10. Responsive Adaptations
    ========================================================================== */
 
+/* ==========================================================================
+   10. Comprehensive Responsive Adaptations (Mobile, Tablet & Small Handsets)
+   ========================================================================== */
+
+/* Large Tablets & Medium Screens */
+@media (max-width: 1024px) {
+  .heritage-map-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .map-sites-list {
+    max-height: 340px;
+  }
+
+  .map-iframe-wrapper {
+    height: 350px;
+  }
+}
+
+/* Tablets (Portrait) & Smaller Screens */
 @media (max-width: 960px) {
   .hero-editorial-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .hero-carabao-col {
     order: 2;
+    display: flex;
+    justify-content: center;
   }
 
   .hero-text-col {
@@ -2388,21 +2540,23 @@ em {
   }
 
   .hero-carabao-standalone {
-    max-width: 420px;
+    max-width: 380px;
+    margin: 0 auto;
   }
 
   .chapter-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
+  /* Disable sticky positioning on mobile/tablet for natural touch scrolling */
   .artifact-card {
     position: static;
   }
 
   .dossier-body-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
   }
 
   .dossier-inner-panel {
@@ -2411,75 +2565,127 @@ em {
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
 
+  /* Minimalist Side Tracker Rail hidden on touch devices to free screen estate */
   .exhibition-side-tracker {
-    display: none;
+    display: none !important;
   }
 
   .masthead-metadata {
-    display: none;
+    display: none !important;
   }
 
   .mobile-toggle-btn {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 0 20px;
+/* Medium Tablets & Large Mobile Screens */
+@media (max-width: 768px) {
+  .museum-masthead {
+    padding: 12px 0;
   }
 
-  .hero-title {
-    font-size: 2.2rem;
-  }
-
-  .hero-carabao-standalone {
-    max-width: 300px;
-  }
-
-  .hero-meta-strip {
-    flex-direction: column;
-    align-items: flex-start;
+  .masthead-flex {
     gap: 12px;
-    width: 100%;
   }
 
-  .strip-divider {
+  .brand-wordmark {
+    font-size: 1.3rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .trail-guide-nodes {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .trail-connector {
     display: none;
   }
 
-  .chapter-badge-header {
-    gap: 16px;
+  .map-spot-ribbon {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
   }
 
-  .chapter-numeral {
-    font-size: 2.6rem;
+  .ribbon-details {
+    width: 100%;
   }
 
-  .chapter-headline {
-    font-size: 1.7rem;
+  .ribbon-title {
+    white-space: normal;
   }
 
-  .dossier-inner-panel {
-    padding: 20px 16px;
+  .ribbon-cta {
+    width: 100%;
   }
 
-  .metric-highlight-box {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .btn-ribbon-chapter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
   }
 
-  /* Lightbox on mobile: stack vertically */
+  .artifact-photo-stage {
+    height: 300px;
+  }
+
+  /* Make expand button permanently visible with subtle touch cue on mobile */
+  .artifact-expand-btn {
+    opacity: 0.95;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Lightbox Modal: Stack Vertically for Thumb-Friendly Viewing */
+  .img-lightbox-backdrop {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .lightbox-close-btn {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 2020;
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+    background: rgba(20, 18, 16, 0.75);
+    backdrop-filter: blur(8px);
+  }
+
   .lightbox-inner {
     flex-direction: column;
+    height: auto;
+    min-height: 100%;
   }
 
   .lightbox-img-side {
-    padding: 50px 16px 20px 16px;
+    padding: 56px 20px 18px 20px;
     flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .lightbox-main-img {
+    max-height: 44vh;
+    width: auto;
+    max-width: 100%;
   }
 
   .lightbox-detail-side {
@@ -2487,8 +2693,521 @@ em {
     max-width: 100%;
     min-width: 0;
     border-left: none;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 20px 20px 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px 20px 48px 20px;
+    overflow-y: visible;
+  }
+}
+
+/* Standard Mobile Handsets (<= 600px) */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Masthead Mobile Polish */
+  .brand-wordmark {
+    font-size: 1.22rem;
+  }
+
+  .masthead-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-ambient-sound {
+    padding: 5px 11px;
+    font-size: 0.72rem;
+  }
+
+  .mobile-toggle-btn {
+    padding: 5px 12px;
+    font-size: 0.76rem;
+  }
+
+  /* Hero Section Mobile Polish */
+  .hero-editorial-revamp {
+    padding: 36px 0 28px 0;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6.8vw, 2.25rem);
+    line-height: 1.16;
+  }
+
+  .hero-lead-text {
+    font-size: 0.92rem;
+    line-height: 1.62;
+    margin-bottom: 20px;
+  }
+
+  .hero-quick-anchors {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.82rem;
+  }
+
+  /* App-Style Stat Counter Grid */
+  .hero-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 14px 10px;
+    width: 100%;
+    text-align: center;
+    background: rgba(141, 81, 25, 0.04);
+    border: 1px solid var(--border-delicate);
+    border-radius: var(--radius-sm);
+  }
+
+  .strip-num {
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+
+  .strip-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+
+  .strip-divider {
+    display: none;
+  }
+
+  .hero-carabao-standalone {
+    max-width: 260px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .hero-curators-note {
+    padding: 10px 14px;
+    font-size: 0.78rem;
+  }
+
+  .curators-names {
+    font-size: 0.8rem;
+  }
+
+  /* Exhibition Rooms & Chapters Mobile Polish */
+  .exhibition-chapter {
+    padding: 48px 0 36px 0;
+  }
+
+  .chapter-badge-header {
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .chapter-numeral {
+    font-size: 2.5rem;
+    line-height: 0.95;
+  }
+
+  .chapter-headline {
+    font-size: 1.55rem;
+    line-height: 1.25;
+  }
+
+  .chapter-subhead {
+    font-size: 0.74rem;
+  }
+
+  .chapter-lead-quote {
+    font-size: 0.92rem;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+  }
+
+  .curatorial-points {
+    margin: 20px 0;
+    gap: 12px;
+  }
+
+  .point-item {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .point-item h4 {
+    font-size: 0.88rem;
+  }
+
+  .point-item p {
+    font-size: 0.82rem;
+    line-height: 1.52;
+  }
+
+  .metric-highlight-box {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px;
+    margin: 20px 0;
+  }
+
+  .metric-val {
+    font-size: 1.45rem;
+  }
+
+  .chapter-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .btn-dossier,
+  .btn-dossier-toggle {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    text-align: center;
+  }
+
+  .stat-callout {
+    text-align: center;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Artifact Stage & Smooth Horizontal Switcher */
+  .artifact-card {
+    padding: 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .artifact-photo-stage {
+    height: 230px;
+  }
+
+  .artifact-tag-badge {
+    font-size: 0.6rem;
+    padding: 3px 8px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .artifact-expand-btn {
+    font-size: 0.68rem;
+    padding: 5px 14px;
+    bottom: 10px;
+  }
+
+  .artifact-switcher-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .artifact-switcher-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .switcher-thumb {
+    width: 60px;
+    height: 46px;
+    flex-shrink: 0;
+  }
+
+  /* In-Section Dossiers Mobile Polish */
+  .in-section-dossier.open {
+    margin-top: 20px;
+  }
+
+  .dossier-inner-panel {
+    padding: 18px 14px;
+    border-radius: var(--radius-sm);
+    border-left-width: 3.5px;
+  }
+
+  .dossier-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .dossier-tag {
+    font-size: 0.68rem;
+    padding: 4px 10px;
+  }
+
+  .dossier-close-inline {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 16px;
+  }
+
+  .dossier-text-block h4 {
+    font-size: 1.12rem;
+  }
+
+  .dossier-text-block p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .dossier-meta-card {
+    padding: 16px 12px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+  }
+
+  .meta-row strong {
+    min-width: 0;
+    color: var(--accent-terracotta);
+  }
+
+  .dossier-ref-list li a {
+    font-size: 0.82rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Interactive Heritage Map Mobile Polish */
+  .heritage-map-section {
+    padding: 48px 0 36px 0;
+  }
+
+  .map-section-header {
+    margin-bottom: 20px;
+  }
+
+  .map-cluster-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+  }
+
+  .map-cluster-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .map-cluster-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 14px;
+    font-size: 0.76rem;
+  }
+
+  .map-canvas-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .map-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-map-control {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .map-iframe-wrapper {
+    height: 260px;
+  }
+
+  .ribbon-thumb {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ribbon-title {
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .map-sites-list {
+    max-height: 280px;
+    padding-right: 0;
+    gap: 8px;
+  }
+
+  .map-site-card {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .site-card-thumb {
+    width: 65px;
+    height: 65px;
+  }
+
+  .site-card-title {
+    font-size: 0.95rem;
+  }
+
+  /* Lightbox Modal Mobile Polish */
+  .lightbox-img-side {
+    padding: 50px 12px 14px 12px;
+  }
+
+  .lightbox-main-img {
+    max-height: 36vh;
+  }
+
+  .lightbox-img-controls {
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  .lightbox-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .lightbox-detail-side {
+    padding: 18px 14px 36px 14px;
+  }
+
+  .lightbox-title {
+    font-size: 1.3rem;
+  }
+
+  .lightbox-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .lightbox-thumb-strip {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+
+  .lightbox-thumb-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lightbox-thumb {
+    width: 52px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  /* Monograph Footer Mobile Polish */
+  .museum-footer {
+    padding: 44px 0 28px 0;
+  }
+
+  .footer-grid {
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+
+  .footer-brand-mark {
+    font-size: 1.45rem;
+  }
+
+  .footer-monograph-title {
+    font-size: 1.35rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* Compact Mobile Screens (<= 420px) */
+@media (max-width: 420px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .brand-wordmark {
+    font-size: 1.15rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.58rem;
+  }
+
+  .masthead-cta {
+    gap: 4px;
+  }
+
+  .btn-ambient-sound {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .mobile-toggle-btn {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+
+  .artifact-photo-stage {
+    height: 200px;
+  }
+
+  .switcher-thumb {
+    width: 52px;
+    height: 38px;
+  }
+
+  .site-card-thumb {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/* Ultra-Compact Screens (<= 360px) */
+@media (max-width: 360px) {
+  .brand-tagline {
+    display: none;
+  }
+
+  .btn-ambient-sound .sound-label {
+    display: none;
+  }
+
+  .hero-meta-strip {
+    padding: 10px 6px;
+    gap: 4px;
+  }
+
+  .strip-num {
+    font-size: 1rem;
   }
 }
 
@@ -2498,6 +3217,7 @@ em {
 
 .heritage-map-section {
   padding: 80px 0 70px 0;
+  scroll-margin-top: 72px;
   background: var(--bg-canvas);
   position: relative;
 }
@@ -3010,46 +3730,6 @@ em {
   user-select: none;
 }
 
-/* Responsive adjustments for Map */
-@media (max-width: 1024px) {
-  .heritage-map-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .map-sites-list {
-    max-height: 380px;
-  }
-
-  .map-iframe-wrapper {
-    height: 360px;
-  }
-}
-
-@media (max-width: 768px) {
-  .trail-guide-nodes {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .trail-connector {
-    display: none;
-  }
-
-  .map-spot-ribbon {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .ribbon-cta {
-    width: 100%;
-    margin-top: 8px;
-  }
-
-  .btn-ribbon-chapter {
-    display: block;
-    text-align: center;
-  }
-}
 
 /* ==========================================================================
    Custom Editorial Theme Cursor (Terracotta & Gold Medallion Tracker)
