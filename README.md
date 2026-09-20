@@ -2,6 +2,7 @@
 ### *An Interactive Digital Cultural Monograph & Art Appreciation Web Exhibition*
 
 [![Developer](https://img.shields.io/badge/Developer-Wigibles%20Creations-D97724?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Wigibles)
+[![University](https://img.shields.io/badge/Bulacan%20State%20University-BSM%20BA%203A-8D5119?style=for-the-badge)](https://www.bulsu.edu.ph)
 [![Web Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20Vanilla%20CSS3%20%7C%20ES6+-8D5119?style=for-the-badge)](https://github.com/Wigibles/PulilanWebsite)
 [![Heritage](https://img.shields.io/badge/Heritage-Pulilan%2C%20Bulacan-2D2925?style=for-the-badge)](https://celebrate.pulilan.gov.ph)
 
@@ -11,9 +12,25 @@
 
 **Pulilan: Kasaysayan at Pamana** is a bespoke, museum-grade cultural web application dedicated to the history, sacred architecture, agrarian traditions, and culinary heritage of **Pulilan, Bulacan, Philippines**. 
 
-Crafted with an editorial design language inspired by world-class museum monographs, this digital exhibition bridges centuries of devotion—from the 18th-century Augustinian foundation and the iconic **Kneeling Carabao Festival**, to centuries-old Spanish colonial ruins, equestrian sports grounds, ancestral heritage homes, and celebrated heirloom dishes.
+Originally conceptualized and researched as an academic **Art Appreciation** project by college students from **Bulacan State University (BSM BA 3A)**, this digital exhibition bridges centuries of devotion—from the 18th-century Augustinian foundation and the iconic **Kneeling Carabao Festival**, to centuries-old Spanish colonial ruins, equestrian sports grounds, ancestral heritage homes, and celebrated heirloom dishes.
 
-Developed by **[Wigibles Creations](https://github.com/Wigibles)**, this application was built with performance, accessibility, storytelling, and visual elegance at its core.
+The application was crafted with an editorial design language inspired by world-class museum monographs, built with performance, accessibility, storytelling, and visual elegance at its core.
+
+---
+
+## 🎓 Student Researchers & Project Proponents
+
+This cultural monograph and interactive web exhibition is the project of college students from **Bulacan State University** pursuing **BSM BA 3A** for their **Art Appreciation** curriculum:
+
+| Researcher | Role | Class & Section | Academic Institution |
+| :--- | :--- | :--- | :--- |
+| **DIEGO, JOHNLYN G.** | Researcher & Project Proponent | BSM BA 3A | Bulacan State University |
+| **GUESE, REA LOUISA D.** | Researcher & Project Proponent | BSM BA 3A | Bulacan State University |
+| **LADERAS, LUJILL C.** | Researcher & Project Proponent | BSM BA 3A | Bulacan State University |
+
+* **Academic Course**: Art Appreciation
+* **College / Institution**: Bulacan State University (BulSU)
+* **Section / Class**: BSM BA 3A
 
 ---
 
@@ -170,5 +187,6 @@ Content within this monograph has been gathered from official government archive
 
 ## ⚖️ License & Attribution
 
+* **Academic Research & Project Proponents**: Conceptualized, researched, and curated by **Diego, Johnlyn G.**, **Guese, Rea Louisa D.**, and **Laderas, Lujill C.** from **Bulacan State University (BSM BA 3A)** as their Art Appreciation project.
 * **Software & Web Application**: Designed and developed by **[Wigibles Creations](https://github.com/Wigibles)**.
 * **Cultural Content & Imagery**: All photographs, municipal seals, and historical monographs belong to their respective cultural caretakers, photographers, and the Municipality of Pulilan, Bulacan. Used here for cultural preservation and educational art appreciation purposes.
