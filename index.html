@@ -20,11 +20,22 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap"
     rel="stylesheet">
 
+  <!-- Official Pulilan Seal Favicon & Browser Bar Icon -->
+  <link rel="icon" type="image/png" href="assets/pulilan-seal.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/pulilan-seal.png">
+
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
+  <!-- Custom Editorial Theme Cursor Elements -->
+  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true">
+    <span class="cursor-ring-text" id="cursor-text"></span>
+  </div>
 
   <!-- ==========================================================================
        1. Curatorial Masthead (Museum Exhibition Top Bar)
@@ -33,8 +44,11 @@
     <div class="container masthead-flex">
       <div class="masthead-identity">
         <a href="#overview" class="brand-link" aria-label="Bayan ng Pulilan Home">
-          <span class="brand-wordmark">Bayan ng Pulilan</span>
-          <span class="brand-tagline">Kasaysayan at Pamana</span>
+          <img src="assets/pulilan-seal.png" alt="Official Seal of Bayan ng Pulilan, Bulacan" class="brand-crest-icon" width="38" height="38">
+          <div class="brand-text-col">
+            <span class="brand-wordmark">Bayan ng Pulilan</span>
+            <span class="brand-tagline">Kasaysayan at Pamana</span>
+          </div>
         </a>
       </div>
 
@@ -138,7 +152,10 @@
   <div class="mobile-chapter-drawer" id="mobile-chapter-drawer" aria-hidden="true">
     <div class="drawer-inner-links">
       <div class="drawer-header-line">
-        <span>EXHIBITION ROOMS &amp; MAP</span>
+        <div class="drawer-title-wrap">
+          <img src="assets/pulilan-seal.png" alt="Pulilan Seal" class="drawer-seal-icon" width="26" height="26">
+          <span>EXHIBITION ROOMS &amp; MAP</span>
+        </div>
         <button id="close-mobile-drawer" aria-label="Close Index">✕</button>
       </div>
       <a href="#heritage-map" class="mobile-pill mobile-pill-map"
@@ -1690,7 +1707,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <div class="footer-brand-mark">Bayan ng Pulilan</div>
+          <div class="footer-brand-row">
+            <img src="assets/pulilan-seal.png" alt="Official Seal of Pulilan, Bulacan" class="footer-seal-icon" width="44" height="44">
+            <div class="footer-brand-mark">Bayan ng Pulilan</div>
+          </div>
           <p class="footer-bio">
             A cultural monograph dedicated to the living agrarian devotion, 18th-century stone masonry, community
             eco-preservation, and heirloom foodways of Pulilan, Bulacan.

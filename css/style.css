@@ -129,6 +129,30 @@ em {
 
 .masthead-identity .brand-link {
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity var(--ease-natural);
+}
+
+.masthead-identity .brand-link:hover {
+  opacity: 0.88;
+}
+
+.brand-crest-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(141, 81, 25, 0.2);
+  transition: transform var(--ease-natural);
+}
+
+.brand-link:hover .brand-crest-icon {
+  transform: scale(1.06) rotate(3deg);
+}
+
+.brand-text-col {
   display: flex;
   flex-direction: column;
 }
@@ -260,6 +284,19 @@ em {
   padding-bottom: 16px;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border-delicate);
+}
+
+.drawer-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-seal-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .drawer-header-line span {
@@ -2403,13 +2440,28 @@ em {
   padding: 72px 0 44px 0;
 }
 
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.footer-seal-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .footer-brand-mark {
   font-family: var(--font-serif);
   font-size: 1.65rem;
   font-weight: 600;
   color: var(--text-ink);
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .footer-grid {
@@ -3152,6 +3204,15 @@ em {
 @media (max-width: 420px) {
   .container {
     padding: 0 12px;
+  }
+
+  .brand-crest-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .masthead-identity .brand-link {
+    gap: 8px;
   }
 
   .brand-wordmark {
