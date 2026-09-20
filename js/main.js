@@ -13,6 +13,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSideTrackerScrollSpy();
   initAmbientAudio();
+  initYouTubeVideoMiniPlayerController();
   initArtifactPhotoSwitchers();
   initScrollReveal();
   initScrollLinkedArtifacts();
@@ -114,129 +115,466 @@ function initSideTrackerScrollSpy() {
 }
 
 /* ==========================================================================
-   2. Traditional Acoustic Ambient Music Controller (Bulacan Harana / Kundiman)
+   2. Subtle Ambient Background Music Controller (Bagani.mp3)
    ========================================================================== */
 
 function initAmbientAudio() {
   const soundBtn = document.getElementById('btn-ambient-sound');
   const soundLabel = document.getElementById('sound-label');
+  const audioElement = document.getElementById('ambient-audio-player') || new Audio('assets/Bagani.mp3');
 
   if (!soundBtn) return;
 
+  // Configuration for subtle background music
+  const TARGET_VOLUME = 0.18; // 18% volume for a gentle, unobtrusive background vibe
   let isPlaying = false;
-  let audioCtx = null;
-  let ambientInterval = null;
-  let masterGain = null;
+  let userMuted = false;
+  let fadeInterval = null;
 
-  // Harana & classical Spanish-colonial guitar harmonic arpeggio (chords in Hz)
-  const chordProgressions = [
-    // D Major plucks
-    [146.83, 220.00, 293.66, 369.99, 440.00, 587.33],
-    // B Minor plucks
-    [123.47, 185.00, 246.94, 293.66, 369.99, 493.88],
-    // G Major plucks
-    [98.00, 146.83, 196.00, 246.94, 293.66, 392.00],
-    // A7 plucks
-    [110.00, 164.81, 220.00, 277.18, 329.63, 440.00]
-  ];
+  audioElement.loop = true;
+  audioElement.volume = TARGET_VOLUME;
 
-  let currentProgressionIndex = 0;
-  let noteIndex = 0;
+  function fadeVolume(targetVol, duration, callback) {
+    if (fadeInterval) clearInterval(fadeInterval);
+    const startVol = audioElement.volume;
+    const diff = targetVol - startVol;
+    const steps = 20;
+    const stepTime = duration / steps;
+    let currentStep = 0;
 
-  function initAudioContext() {
-    if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContextClass();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-      masterGain.connect(audioCtx.destination);
-    }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-  }
+    fadeInterval = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+      audioElement.volume = Math.max(0, Math.min(1, startVol + diff * progress));
 
-  // Soft acoustic plucked string synthesis
-  function playPluck(freq, time, duration = 2.4) {
-    if (!audioCtx || !isPlaying) return;
-
-    const osc = audioCtx.createOscillator();
-    const oscHarmonic = audioCtx.createOscillator();
-    const pluckGain = audioCtx.createGain();
-    const filter = audioCtx.createBiquadFilter();
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(freq, time);
-
-    oscHarmonic.type = 'sine';
-    oscHarmonic.frequency.setValueAtTime(freq * 2, time);
-
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(1400, time);
-    filter.frequency.exponentialRampToValueAtTime(280, time + duration);
-
-    pluckGain.gain.setValueAtTime(0.0001, time);
-    pluckGain.gain.exponentialRampToValueAtTime(0.18, time + 0.03);
-    pluckGain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
-
-    osc.connect(filter);
-    oscHarmonic.connect(filter);
-    filter.connect(pluckGain);
-    pluckGain.connect(masterGain);
-
-    osc.start(time);
-    oscHarmonic.start(time);
-    osc.stop(time + duration);
-    oscHarmonic.stop(time + duration);
-  }
-
-  function startAmbientMusic() {
-    initAudioContext();
-    isPlaying = true;
-    masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
-    masterGain.gain.setTargetAtTime(0.24, audioCtx.currentTime, 0.6);
-
-    soundBtn.classList.add('playing');
-    if (soundLabel) soundLabel.textContent = '\u266b Music';
-
-    // Play initial plucks
-    playPluck(chordProgressions[0][0], audioCtx.currentTime);
-
-    ambientInterval = setInterval(() => {
-      if (!isPlaying || !audioCtx) return;
-
-      const currentChord = chordProgressions[currentProgressionIndex];
-      const freq = currentChord[noteIndex % currentChord.length];
-      
-      playPluck(freq, audioCtx.currentTime);
-
-      noteIndex++;
-      if (noteIndex % 6 === 0) {
-        currentProgressionIndex = (currentProgressionIndex + 1) % chordProgressions.length;
+      if (currentStep >= steps) {
+        clearInterval(fadeInterval);
+        fadeInterval = null;
+        audioElement.volume = targetVol;
+        if (callback) callback();
       }
-    }, 540);
+    }, stepTime);
   }
 
-  function stopAmbientMusic() {
-    isPlaying = false;
-    if (ambientInterval) {
-      clearInterval(ambientInterval);
-      ambientInterval = null;
+  function syncPlayingState(playing) {
+    isPlaying = playing;
+    if (playing) {
+      soundBtn.classList.add('playing');
+      soundBtn.setAttribute('aria-pressed', 'true');
+      if (soundLabel) soundLabel.textContent = 'Bagani';
+    } else {
+      soundBtn.classList.remove('playing');
+      soundBtn.setAttribute('aria-pressed', 'false');
+      if (soundLabel) soundLabel.textContent = 'Music';
     }
-    if (masterGain && audioCtx) {
-      masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
-      masterGain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.4);
-    }
-    soundBtn.classList.remove('playing');
-    if (soundLabel) soundLabel.textContent = 'Music';
   }
 
+  function playMusic() {
+    if (userMuted) return;
+    audioElement.volume = TARGET_VOLUME;
+
+    const playPromise = audioElement.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          syncPlayingState(true);
+        })
+        .catch(() => {
+          // Autoplay was blocked by browser until user gesture; arm fallback listeners
+          syncPlayingState(false);
+          armFallbackTriggers();
+        });
+    }
+  }
+
+  function pauseMusic() {
+    syncPlayingState(false);
+    fadeVolume(0, 400, () => {
+      audioElement.pause();
+    });
+  }
+
+  // Toggle on masthead button click
   soundBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    disarmFallbackTriggers();
     if (!isPlaying) {
-      startAmbientMusic();
+      userMuted = false;
+      playMusic();
     } else {
-      stopAmbientMusic();
+      userMuted = true;
+      pauseMusic();
+    }
+  });
+
+  // Keep state in sync with native audio events
+  audioElement.addEventListener('play', () => syncPlayingState(true));
+  audioElement.addEventListener('pause', () => {
+    if (!audioElement.seeking) syncPlayingState(false);
+  });
+
+  // Earliest interaction fallback in case browser strictly blocks zero-gesture autoplay
+  function onFirstUserGesture() {
+    disarmFallbackTriggers();
+    if (!userMuted && !isPlaying) {
+      playMusic();
+    }
+  }
+
+  const gestureEvents = ['pointerdown', 'mousedown', 'click', 'scroll', 'wheel', 'touchstart', 'keydown'];
+
+  function armFallbackTriggers() {
+    gestureEvents.forEach(evt => {
+      window.addEventListener(evt, onFirstUserGesture, { once: true, passive: true });
+    });
+  }
+
+  function disarmFallbackTriggers() {
+    gestureEvents.forEach(evt => {
+      window.removeEventListener(evt, onFirstUserGesture);
+    });
+  }
+
+  // Attempt instant playback immediately upon opening
+  playMusic();
+  window.addEventListener('load', () => {
+    if (!isPlaying && !userMuted) playMusic();
+  });
+
+  let pausedByVideo = false;
+
+  window.pulilanAudio = {
+    play: () => {
+      userMuted = false;
+      pausedByVideo = false;
+      playMusic();
+    },
+    pause: () => {
+      pauseMusic();
+    },
+    isPlaying: () => isPlaying,
+    isUserMuted: () => userMuted,
+    pauseForVideo: () => {
+      if (isPlaying) {
+        pausedByVideo = true;
+        pauseMusic();
+      }
+    },
+    resumeAfterVideo: () => {
+      if (pausedByVideo && !userMuted) {
+        pausedByVideo = false;
+        playMusic();
+      }
+    }
+  };
+
+  // When clicking any "Watch Video" anchor, smoothly pause ambient music
+  document.querySelectorAll('.btn-watch-video').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (isPlaying) {
+        window.pulilanAudio.pauseForVideo();
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   2.1 YouTube Video Controller with Floating Mini-Player on Scroll
+   ========================================================================== */
+
+function initYouTubeVideoMiniPlayerController() {
+  const videoConfigs = [
+    {
+      frameId: 'frame-church-video',
+      slotId: 'slot-church-video',
+      iframeId: 'yt-player-church'
+    },
+    {
+      frameId: 'frame-festival-video',
+      slotId: 'slot-festival-video',
+      iframeId: 'yt-player-festival'
+    }
+  ];
+
+  const ytPlayers = {};
+  const playStates = {};
+  let currentActiveFrame = null;
+
+  function postToIframe(iframe, command, args = []) {
+    if (!iframe || !iframe.contentWindow) return;
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: command,
+        args: args
+      }), '*');
+    } catch (err) {
+      // Ignore cross-origin error
+    }
+  }
+
+  function handleVideoPlaying(cfg) {
+    playStates[cfg.iframeId] = true;
+    currentActiveFrame = cfg.frameId;
+
+    // Pause the other video if playing
+    videoConfigs.forEach(c => {
+      if (c.iframeId !== cfg.iframeId && playStates[c.iframeId]) {
+        pauseVideo(c);
+      }
+    });
+
+    // Mute/pause ambient background music while video plays
+    if (window.pulilanAudio && window.pulilanAudio.pauseForVideo) {
+      window.pulilanAudio.pauseForVideo();
+    }
+
+    // Update mini player controls UI in this frame
+    const frame = document.getElementById(cfg.frameId);
+    if (frame) {
+      const pauseIcon = frame.querySelector('.mini-icon-pause');
+      const playIcon = frame.querySelector('.mini-icon-play');
+      const label = frame.querySelector('.mini-ctrl-label');
+      if (pauseIcon) pauseIcon.style.display = 'inline';
+      if (playIcon) playIcon.style.display = 'none';
+      if (label) label.textContent = 'Pause';
+    }
+
+    // If slot is currently scrolled out of view, dock immediately
+    const slot = document.getElementById(cfg.slotId);
+    if (slot && frame) {
+      const rect = slot.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) {
+        dockMiniPlayer(cfg);
+      }
+    }
+  }
+
+  function handleVideoPausedOrEnded(cfg, isEnded = false) {
+    playStates[cfg.iframeId] = false;
+
+    // Update mini player controls UI
+    const frame = document.getElementById(cfg.frameId);
+    if (frame) {
+      const pauseIcon = frame.querySelector('.mini-icon-pause');
+      const playIcon = frame.querySelector('.mini-icon-play');
+      const label = frame.querySelector('.mini-ctrl-label');
+      if (pauseIcon) pauseIcon.style.display = 'none';
+      if (playIcon) playIcon.style.display = 'inline';
+      if (label) label.textContent = 'Play';
+    }
+
+    // If all videos are stopped/paused, resume ambient background music
+    const anyPlaying = Object.values(playStates).some(Boolean);
+    if (!anyPlaying) {
+      if (window.pulilanAudio && window.pulilanAudio.resumeAfterVideo) {
+        window.pulilanAudio.resumeAfterVideo();
+      }
+    }
+
+    if (isEnded) {
+      undockMiniPlayer(cfg);
+      if (currentActiveFrame === cfg.frameId) {
+        currentActiveFrame = null;
+      }
+    }
+  }
+
+  function pauseVideo(cfg) {
+    if (ytPlayers[cfg.iframeId] && typeof ytPlayers[cfg.iframeId].pauseVideo === 'function') {
+      try { ytPlayers[cfg.iframeId].pauseVideo(); } catch(e){}
+    } else {
+      const iframe = document.getElementById(cfg.iframeId);
+      postToIframe(iframe, 'pauseVideo');
+    }
+    handleVideoPausedOrEnded(cfg, false);
+  }
+
+  function playVideo(cfg) {
+    if (ytPlayers[cfg.iframeId] && typeof ytPlayers[cfg.iframeId].playVideo === 'function') {
+      try { ytPlayers[cfg.iframeId].playVideo(); } catch(e){}
+    } else {
+      const iframe = document.getElementById(cfg.iframeId);
+      postToIframe(iframe, 'playVideo');
+    }
+    handleVideoPlaying(cfg);
+  }
+
+  function skipVideo(cfg, seconds = 10) {
+    if (ytPlayers[cfg.iframeId] && typeof ytPlayers[cfg.iframeId].getCurrentTime === 'function') {
+      try {
+        const cur = ytPlayers[cfg.iframeId].getCurrentTime() || 0;
+        ytPlayers[cfg.iframeId].seekTo(cur + seconds, true);
+      } catch(e) {}
+    } else {
+      const iframe = document.getElementById(cfg.iframeId);
+      postToIframe(iframe, 'seekTo', [seconds, true]);
+    }
+  }
+
+  function stopAndCloseVideo(cfg) {
+    pauseVideo(cfg);
+    undockMiniPlayer(cfg);
+    if (currentActiveFrame === cfg.frameId) {
+      currentActiveFrame = null;
+    }
+    if (window.pulilanAudio && window.pulilanAudio.resumeAfterVideo) {
+      window.pulilanAudio.resumeAfterVideo();
+    }
+  }
+
+  function dockMiniPlayer(cfg) {
+    const frame = document.getElementById(cfg.frameId);
+    const slot = document.getElementById(cfg.slotId);
+    if (!frame || !slot) return;
+
+    if (!frame.classList.contains('mini-docked')) {
+      slot.style.minHeight = `${frame.offsetHeight}px`;
+      frame.classList.add('mini-docked');
+    }
+  }
+
+  function undockMiniPlayer(cfg) {
+    const frame = document.getElementById(cfg.frameId);
+    const slot = document.getElementById(cfg.slotId);
+    if (!frame || !slot) return;
+
+    if (frame.classList.contains('mini-docked')) {
+      frame.classList.remove('mini-docked');
+      slot.style.minHeight = '';
+    }
+  }
+
+  // Set up Scroll / Intersection Observers and button listeners for each slot
+  videoConfigs.forEach(cfg => {
+    const slot = document.getElementById(cfg.slotId);
+    const frame = document.getElementById(cfg.frameId);
+    const iframe = document.getElementById(cfg.iframeId);
+
+    if (!slot || !frame || !iframe) return;
+
+    const btnClose = frame.querySelector('.mini-btn-close');
+    const btnStop = frame.querySelector('.mini-btn-stop');
+    const btnPause = frame.querySelector('.mini-btn-pause');
+    const btnSkip = frame.querySelector('.mini-btn-skip');
+
+    if (btnClose) {
+      btnClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stopAndCloseVideo(cfg);
+      });
+    }
+
+    if (btnStop) {
+      btnStop.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stopAndCloseVideo(cfg);
+      });
+    }
+
+    if (btnPause) {
+      btnPause.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (playStates[cfg.iframeId]) {
+          pauseVideo(cfg);
+        } else {
+          playVideo(cfg);
+        }
+      });
+    }
+
+    if (btnSkip) {
+      btnSkip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        skipVideo(cfg, 10);
+      });
+    }
+
+    // Scroll observer: when video is playing and leaves viewport, pop into mini player
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Returned to view: undock
+            if (frame.classList.contains('mini-docked')) {
+              undockMiniPlayer(cfg);
+            }
+          } else {
+            // Scrolled out of view: if playing, dock into mini picture-in-picture
+            if (playStates[cfg.iframeId]) {
+              dockMiniPlayer(cfg);
+            }
+          }
+        });
+      }, { threshold: 0.15 });
+
+      observer.observe(slot);
+    }
+  });
+
+  // Setup YouTube API players
+  function setupYT() {
+    videoConfigs.forEach(cfg => {
+      const el = document.getElementById(cfg.iframeId);
+      if (!el || ytPlayers[cfg.iframeId]) return;
+
+      try {
+        ytPlayers[cfg.iframeId] = new YT.Player(cfg.iframeId, {
+          events: {
+            onStateChange: (event) => {
+              // 1 = PLAYING, 2 = PAUSED, 0 = ENDED
+              if (event.data === 1) {
+                handleVideoPlaying(cfg);
+              } else if (event.data === 2) {
+                handleVideoPausedOrEnded(cfg, false);
+              } else if (event.data === 0) {
+                handleVideoPausedOrEnded(cfg, true);
+              }
+            }
+          }
+        });
+      } catch (err) {
+        // Fallback to postMessage handler
+      }
+    });
+  }
+
+  if (window.YT && window.YT.Player) {
+    setupYT();
+  } else {
+    const prevReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof prevReady === 'function') prevReady();
+      setupYT();
+    };
+  }
+
+  // Cross-origin postMessage listener for YouTube events
+  window.addEventListener('message', (event) => {
+    try {
+      let data = event.data;
+      if (typeof data === 'string') {
+        data = JSON.parse(data);
+      }
+      if (!data) return;
+
+      videoConfigs.forEach(cfg => {
+        const iframe = document.getElementById(cfg.iframeId);
+        if (iframe && iframe.contentWindow === event.source) {
+          if (data.event === 'onStateChange') {
+            if (data.info === 1) {
+              handleVideoPlaying(cfg);
+            } else if (data.info === 2) {
+              handleVideoPausedOrEnded(cfg, false);
+            } else if (data.info === 0) {
+              handleVideoPausedOrEnded(cfg, true);
+            }
+          }
+        }
+      });
+    } catch (e) {
+      // Non-JSON message from other sources
     }
   });
 }
@@ -707,20 +1045,20 @@ function initImageLightbox() {
 
     let gallery = [];
     
-    // 1. Gather all photos from switcher thumbs on this part/card
-    if (card) {
-      const thumbs = card.querySelectorAll('.switcher-thumb[data-src]');
-      if (thumbs.length > 0) {
-        gallery = Array.from(thumbs).map(btn => btn.getAttribute('data-src')).filter(Boolean);
-      }
-    }
-
-    // 2. If switcher thumbs are not present or empty, check data-lightbox-gallery attribute
-    if (!gallery.length) {
+    // 1. If element defines its own explicit gallery, prefer it
+    if (stage.hasAttribute('data-lightbox-gallery')) {
       try {
         gallery = JSON.parse(stage.getAttribute('data-lightbox-gallery') || '[]');
       } catch (e) {
         gallery = [];
+      }
+    }
+
+    // 2. Otherwise gather from switcher thumbs on this part/card
+    if (!gallery.length && card) {
+      const thumbs = card.querySelectorAll('.switcher-thumb[data-src]');
+      if (thumbs.length > 0) {
+        gallery = Array.from(thumbs).map(btn => btn.getAttribute('data-src')).filter(Boolean);
       }
     }
 
@@ -839,8 +1177,8 @@ function initImageLightbox() {
     }, 300);
   }
 
-  // Attach click listeners to all artifact photo stages
-  document.querySelectorAll('.artifact-photo-stage[data-lightbox-src]').forEach(stage => {
+  // Attach click listeners to all artifact photo stages & dossier gallery items
+  document.querySelectorAll('.artifact-photo-stage[data-lightbox-src], .dossier-gallery-item[data-lightbox-src]').forEach(stage => {
     stage.addEventListener('click', () => openLightbox(stage));
     stage.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {

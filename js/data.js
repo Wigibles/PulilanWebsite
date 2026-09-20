@@ -28,7 +28,14 @@ const PULILAN_DATA = {
       shortDescription: "The Diocesan Shrine and Parish of San Isidro Labrador is a historic church in Pulilan, Bulacan, built during the Spanish colonial period. The church has a simple and well-organized design, with a long main area that leads to the altar. It serves as an important place of worship and a center of community activities in Pulilan. The church is also known for the annual Kneeling Carabao Festival, held every May 14 and 15, where hundreds of carabaos kneel in front of the church as a sign of respect and thanksgiving to San Isidro Labrador, the patron saint of farmers.",
       history: "Pulilan was founded by Augustinian friars in 1749 as an agricultural community under the parish of Quingua, now known as Plaridel, and was placed under the patronage of San Isidro Labrador. In 1764, it became an independent parish, with its first church and convent built from bamboo, wood, and nipa. Because people had difficulty crossing the Angat River during typhoons to attend church, a new parish was established in 1794, with Fray Vicente Villamanzo as its first parish priest. In 1826, Fray Juan Rico began building a permanent stone church, which was later damaged by earthquakes in 1863 and 1880 and rebuilt using stronger materials. The Kneeling Carabao tradition also became part of the community’s religious and farming practices. The church was consecrated on February 7, 2013, restored from 2018 to 2019, and officially became a Diocesan Shrine on December 13, 2020.",
       culturalSignificance: "As the historic mother church of Pulilan, the shrine embodies more than 270 years of unbroken agrarian faith, Spanish-colonial adobe craftsmanship, and community resilience against floods and earthquakes.",
+      video: {
+        title: "Viva San Isidro",
+        author: "Jon Meer Vera Perez",
+        url: "https://www.youtube.com/watch?v=eGgN9YJaaOg",
+        embedUrl: "https://www.youtube-nocookie.com/embed/eGgN9YJaaOg"
+      },
       references: [
+        { label: "YouTube: \"Viva San Isidro\" — Official Theme Song (Jon Meer Vera Perez)", url: "https://www.youtube.com/watch?v=eGgN9YJaaOg" },
         { label: "Diocesan Shrine of San Isidro Labrador Historical Archive", url: "https://dspsilpulilan.franzcreations.site/?p=the-shrine" },
         { label: "CBCP News: Elevation to Diocesan Shrine", url: "https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/" }
       ]
@@ -119,17 +126,27 @@ const PULILAN_DATA = {
     name: "Kneeling Carabao Festival",
     location: "Poblacion, Pulilan, Bulacan",
     date: "May 14 Every Year",
-    coverImage: "assets/Kneeling Carabao Festival.jpg",
+    coverImage: "assets/Kneeling Carabao Festival Traditional Rites.jpg",
     gallery: [
+      "assets/Kneeling Carabao Festival Traditional Rites.jpg",
+      "assets/Kneeling Carabao Festival Church Rites.jpg",
+      "assets/Kneeling Carabao Festival Parade Float.jpg",
+      "assets/Kneeling Carabao Festival Street Mural.jpg",
       "assets/Kneeling Carabao Festival.jpg",
-      "assets/Kneeling Carabao Festival Other Photos 1.jpg",
-      "assets/San Isidro Church.jpg"
+      "assets/Kneeling Carabao Festival Other Photos 1.jpg"
     ],
     shortDescription: "The Kneeling Carabao Festival is a cultural and religious celebration every 14th of May in Pulilan, Bulacan. It is one of the ways to honor San Isidro Labrador, the patron saint of farmers, and serves as a thanksgiving celebration for a bountiful harvest and blessings while recognizing the hard work and contributions of local farmers. There’s a grand parade of decorated carabaos, floats, marching bands, and street dancing that attracts many tourists who come to witness this unique tradition. Also a showcase of each barangay of their decorated kubo with vegetables and other crops from their harvest, that represent the agricultural livelihood and abundance of the community. Those carabaos are trained by their owners to kneel in front of the church of San Isidro Labrador Parish Church as a sign of thanksgiving and respect for the patron saint.",
     history: "The festival is rooted in the devotion to San Isidro Labrador, a peasant field worker from Spain who was known for his deep faith and dedication to farming. According to Catholic tradition, angels helped him plow the fields while he prayed, symbolizing divine blessings for farmers. When Spanish missionaries established settlements in Pulilan, then it was dedicated to San Isidro. Pulilan was originally a barrio known as San Isidro or Buenavista under Quingua, now Plaridel, and was established under the advocation of San Isidro in 1749. The San Isidro Labrador Parish Church, built in 1829, later became the center of the tradition. Carabaos is well known as one of the important animals when it comes to farming, it became part of the tradition. The carabao trained to kneel in front of patrons as a symbol of thanksgiving, humility, and respect.",
     howCelebrated: "This begins with a grand parade of decorated carabaos, floats, marching bands, and street dancing. Carabaos are decorated with flowers, painted designs, and colorful costumes. As they pass in front of the San Isidro Labrador Parish Church, the owners signal them to kneel in front of the church while people surround them, chanting “Viva San Isidro!” and shouting “Luhod!”",
     culturalSignificance: "The Kneeling Carabao Festival holds cultural and religious significance as a collective expression of gratitude to San Isidro Labrador for good health, protection of livestock, and fruitful agricultural harvests. It symbolizes the hard work, humility, and dedication of local farmers. Through this, it helps preserve Pulilan’s agricultural traditions and cultural heritage while bringing the community together.",
+    video: {
+      title: "Kneeling Carabao Festival 2024 | Pulilan, Bulacan - A Celebration of Faith, Culture, and Gratitude",
+      channel: "Tagapagkwento Film Productions",
+      url: "https://www.youtube.com/watch?v=IF6v9ZsYFtA",
+      embedUrl: "https://www.youtube-nocookie.com/embed/IF6v9ZsYFtA"
+    },
     references: [
+      { label: "YouTube: Kneeling Carabao Festival 2024 Video Feature (Tagapagkwento Film Productions)", url: "https://www.youtube.com/watch?v=IF6v9ZsYFtA" },
       { label: "Manila Bulletin / Tempo: Kneeling carabaos to wow Pulilan fiesta crowds", url: "https://tempo.mb.com.ph/2026/05/13/kneeling-carabaos-to-wow-pulilan-fiesta-crowds" },
       { label: "Celebrate Pulilan Official Tourism: Kneeling Carabao Festival", url: "https://celebrate.pulilan.gov.ph/tourism/Kneeling-Carabao-Festival-/8" }
     ]

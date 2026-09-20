@@ -1413,6 +1413,373 @@ em {
   font-weight: 500;
 }
 
+.btn-watch-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: var(--accent-terracotta);
+  border: 1.5px solid var(--accent-terracotta);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--ease-natural);
+  box-shadow: 0 4px 14px rgba(141, 81, 25, 0.22);
+}
+
+.btn-watch-video .play-icon {
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  margin-right: 2px;
+  padding-left: 2px;
+}
+
+.btn-watch-video:hover {
+  background: #A05D1C;
+  border-color: #A05D1C;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(141, 81, 25, 0.32);
+}
+
+/* ==========================================================================
+   Festival Video Archive Showcase (Section 06: Kneeling Carabao)
+   ========================================================================== */
+
+.festival-video-showcase {
+  margin-top: 52px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  box-shadow: 0 14px 38px rgba(58, 53, 48, 0.06);
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 100px;
+}
+
+.festival-video-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-terracotta), #D9A066, var(--accent-terracotta));
+}
+
+.video-showcase-header {
+  max-width: 820px;
+  margin-bottom: 24px;
+}
+
+.video-showcase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(141, 81, 25, 0.07);
+  border: 1px solid rgba(141, 81, 25, 0.22);
+  color: var(--accent-terracotta);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+.video-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #E53935;
+  box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.7);
+  animation: videoPulse 1.8s infinite;
+}
+
+@keyframes videoPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(229, 57, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+  }
+}
+
+.video-showcase-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--text-ink);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.video-showcase-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-terracotta);
+}
+
+.video-showcase-lead {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin-bottom: 0;
+}
+
+.video-player-dock-slot {
+  position: relative;
+  width: 100%;
+}
+
+.video-player-frame {
+  background: #141210;
+  border: 1px solid rgba(45, 41, 37, 0.12);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 16px 42px rgba(20, 18, 16, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+
+.mini-player-top-bar {
+  display: none;
+}
+
+.mini-player-controls-overlay {
+  display: none;
+}
+
+/* Floating Picture-in-Picture Mini-Player on Scroll */
+.video-player-frame.mini-docked {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  z-index: 2200;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(141, 81, 25, 0.45);
+  animation: miniPlayerPopIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes miniPlayerPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.video-player-frame.mini-docked .mini-player-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(18, 15, 13, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mini-player-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.mini-player-badge {
+  background: #E53935;
+  color: #FFFFFF;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.mini-player-title {
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.mini-btn-close {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #FFFFFF;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.mini-btn-close:hover {
+  background: #E53935;
+  transform: scale(1.1);
+}
+
+.video-player-frame.mini-docked .mini-player-controls-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(24, 20, 18, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+}
+
+.mini-ctrl-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--ease-natural);
+}
+
+.mini-ctrl-btn:hover {
+  background: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.mini-btn-stop:hover {
+  background: #E53935;
+  border-color: #E53935;
+}
+
+.video-player-frame.mini-docked .video-player-bar {
+  display: none;
+}
+
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000000;
+}
+
+.video-player-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-player-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 22px;
+  background: #1E1B18;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.video-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #D3CDC7;
+  flex-wrap: wrap;
+}
+
+.video-play-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFB074;
+  background: rgba(255, 176, 116, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.video-credit strong {
+  color: #FFFFFF;
+}
+
+.video-sep {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.video-sub {
+  color: #A9A29B;
+}
+
+.btn-video-yt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--ease-natural);
+  flex-shrink: 0;
+}
+
+.btn-video-yt:hover {
+  background: #E53935;
+  border-color: #E53935;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.35);
+}
+
 /* Exhibit Photo Column & Artifact Card */
 .artifact-card {
   background: var(--bg-surface);
@@ -2403,6 +2770,78 @@ em {
   text-decoration: underline;
 }
 
+/* Curatorial Archival Photographic Collection Grid */
+.dossier-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0 28px 0;
+}
+
+.dossier-gallery-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(58, 53, 48, 0.04);
+  transition: transform var(--ease-natural), box-shadow var(--ease-natural), border-color var(--ease-natural);
+}
+
+.dossier-gallery-item:hover,
+.dossier-gallery-item:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent-terracotta);
+  box-shadow: 0 10px 24px rgba(141, 81, 25, 0.16);
+  outline: none;
+}
+
+.dossier-gallery-item img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.dossier-gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.dossier-item-caption {
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.dossier-item-caption strong {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-ink);
+  line-height: 1.3;
+}
+
+.dossier-item-caption span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+@media (max-width: 580px) {
+  .dossier-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .dossier-gallery-item img {
+    height: 185px;
+  }
+}
+
 /* ==========================================================================
    7. Scrollytelling Reveal Animations (1.1)
    ========================================================================== */
@@ -2748,6 +3187,24 @@ em {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 24px 20px 48px 20px;
     overflow-y: visible;
+  }
+
+  /* Festival Video Responsive Polish */
+  .festival-video-showcase {
+    padding: 24px 18px;
+    margin-top: 36px;
+  }
+
+  .video-player-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .btn-video-yt {
+    width: 100%;
+    justify-content: center;
   }
 }
 

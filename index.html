@@ -59,8 +59,8 @@
       </div>
 
       <div class="masthead-cta">
-        <button class="btn-ambient-sound" id="btn-ambient-sound" aria-label="Toggle Ambient Music"
-          title="Click to toggle traditional acoustic ambient music">
+        <button class="btn-ambient-sound" id="btn-ambient-sound" aria-label="Toggle Background Music (Bagani)"
+          title="Click to toggle subtle background music (Bagani)" aria-pressed="false">
           <span class="sound-wave-anim" aria-hidden="true">
             <span class="wave-bar"></span>
             <span class="wave-bar"></span>
@@ -69,6 +69,8 @@
           </span>
           <span class="sound-label" id="sound-label">Music</span>
         </button>
+        <!-- Subtle Ambient Background Audio Element -->
+        <audio id="ambient-audio-player" src="assets/Bagani.mp3" preload="auto" loop autoplay></audio>
         <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Exhibition Index">☰ Rooms</button>
       </div>
     </div>
@@ -270,6 +272,9 @@
               <button class="btn-dossier-toggle" data-target="dossier-church">
                 <span class="toggle-icon">✦</span> <span class="toggle-text">Read Detailed Curatorial Dossier</span>
               </button>
+              <a href="#church-video-archive" class="btn-watch-video">
+                <span class="play-icon">▶</span> <span class="watch-text">Watch Shrine Feature</span>
+              </a>
               <span class="stat-callout">Permanent Stone Begun 1826 · Elevated 2020</span>
             </div>
           </div>
@@ -312,6 +317,74 @@
           </div>
         </div>
 
+        <!-- CHURCH VIDEO ARCHIVE SHOWCASE -->
+        <div class="festival-video-showcase church-video-showcase" id="church-video-archive">
+          <div class="video-showcase-header">
+            <div class="video-showcase-badge">
+              <span class="video-pulse-dot" aria-hidden="true"></span>
+              <span>DEVOTIONAL HYMN · PATRONAL ANTHEM</span>
+            </div>
+            <h3 class="video-showcase-title">Diocesan Shrine Heritage Hymn · <em>"Viva San Isidro"</em></h3>
+            <p class="video-showcase-lead">
+              Experience the vibrant spiritual devotion, joyful town faith, and thanksgiving to San Isidro Labrador through the official theme song composed by Jon Meer Vera Perez for Pulilan, Bulacan.
+            </p>
+          </div>
+
+          <div class="video-player-dock-slot" id="slot-church-video">
+            <div class="video-player-frame" id="frame-church-video" data-player-id="yt-player-church" data-title="Diocesan Shrine: Viva San Isidro">
+              <div class="mini-player-top-bar">
+                <div class="mini-player-info">
+                  <span class="mini-player-badge">NOW PLAYING</span>
+                  <span class="mini-player-title">Diocesan Shrine: Viva San Isidro</span>
+                </div>
+                <button class="mini-btn-close" title="Close and stop video" aria-label="Close and stop video">✕</button>
+              </div>
+
+              <div class="video-player-wrapper">
+                <iframe 
+                  id="yt-player-church"
+                  src="https://www.youtube-nocookie.com/embed/eGgN9YJaaOg?enablejsapi=1&amp;rel=0&amp;modestbranding=1" 
+                  title="Viva San Isidro - Diocesan Shrine &amp; Parish of San Isidro Labrador" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen 
+                  loading="lazy">
+                </iframe>
+              </div>
+
+              <div class="mini-player-controls-overlay">
+                <button class="mini-ctrl-btn mini-btn-pause" title="Pause / Play Video" aria-label="Pause or Play">
+                  <span class="mini-icon mini-icon-pause">❚❚</span>
+                  <span class="mini-icon mini-icon-play" style="display:none;">▶</span>
+                  <span class="mini-ctrl-label">Pause</span>
+                </button>
+                <button class="mini-ctrl-btn mini-btn-skip" title="Skip 10 Seconds Forward" aria-label="Skip forward 10 seconds">
+                  <span class="mini-icon">⏩</span>
+                  <span class="mini-ctrl-label">+10s</span>
+                </button>
+                <button class="mini-ctrl-btn mini-btn-stop" title="Stop &amp; Resume Background Music" aria-label="Stop video">
+                  <span class="mini-icon">⏹</span>
+                  <span class="mini-ctrl-label">Stop</span>
+                </button>
+              </div>
+
+              <div class="video-player-bar">
+                <div class="video-meta-info">
+                  <span class="video-play-badge">▶ OFFICIAL THEME HYMN</span>
+                  <span class="video-credit">Track: <strong>"Viva San Isidro"</strong> · Jon Meer Vera Perez</span>
+                  <span class="video-sep">·</span>
+                  <span class="video-sub">Diocesan Shrine of San Isidro Labrador · Pulilan, Bulacan</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=eGgN9YJaaOg" target="_blank" rel="noopener noreferrer" class="btn-video-yt" aria-label="Watch Viva San Isidro on YouTube">
+                  <span>Watch on YouTube</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- ======================================================================
              IN-SECTION EXPANDABLE DOSSIER (Shown right inside the section!)
              ====================================================================== -->
@@ -339,6 +412,8 @@
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
+                  <li><a href="https://www.youtube.com/watch?v=eGgN9YJaaOg" target="_blank"
+                      rel="noopener noreferrer">YouTube: "Viva San Isidro" Official Theme Song (Jon Meer Vera Perez) &rarr;</a></li>
                   <li><a href="https://dspsilpulilan.franzcreations.site/?p=the-shrine" target="_blank"
                       rel="noopener noreferrer">https://dspsilpulilan.franzcreations.site/?p=the-shrine &rarr;</a></li>
                   <li><a href="https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/"
@@ -946,6 +1021,9 @@
               <button class="btn-dossier-toggle" data-target="dossier-fest">
                 <span class="toggle-icon">✦</span> <span class="toggle-text">Read Detailed Curatorial Dossier</span>
               </button>
+              <a href="#festival-video-archive" class="btn-watch-video">
+                <span class="play-icon">▶</span> <span class="watch-text">Watch Festival Video</span>
+              </a>
               <span class="stat-callout">May 14 Annually · In Honor of San Isidro Labrador</span>
             </div>
           </div>
@@ -953,12 +1031,12 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Kneeling Carabao Festival.jpg" data-lightbox-tag="LIVING TRADITION"
+                data-lightbox-src="assets/Kneeling Carabao Festival Traditional Rites.jpg" data-lightbox-tag="LIVING TRADITION"
                 data-lightbox-title="Kneeling Carabao Festival"
                 data-lightbox-location="San Isidro Labrador Church, Poblacion, Pulilan"
                 data-lightbox-desc="Held every May 14th and 15th, this annual fiesta honors San Isidro Labrador. Hundreds of carabaos are brought to kneel before the church as a sign of devotion and thanksgiving. The festival features decorated carabaos, kubo exhibits, and a procession."
-                data-lightbox-gallery='["assets/Kneeling Carabao Festival.jpg","assets/Kneeling Carabao Festival Other Photos 1.jpg","assets/San Isidro Church.jpg"]'>
-                <img src="assets/Kneeling Carabao Festival.jpg" alt="Kneeling Carabao Festival in Pulilan, Bulacan"
+                data-lightbox-gallery='["assets/Kneeling Carabao Festival Traditional Rites.jpg","assets/Kneeling Carabao Festival Church Rites.jpg","assets/Kneeling Carabao Festival Parade Float.jpg","assets/Kneeling Carabao Festival Street Mural.jpg","assets/Kneeling Carabao Festival.jpg","assets/Kneeling Carabao Festival Other Photos 1.jpg"]'>
+                <img src="assets/Kneeling Carabao Festival Traditional Rites.jpg" alt="Kneeling Carabao Festival in Pulilan, Bulacan"
                   class="active-artifact-img" id="artifact-img-festival">
                 <div class="artifact-tag-badge">LIVING TRADITION</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
@@ -966,23 +1044,103 @@
 
               <div class="artifact-switcher-row">
                 <button class="switcher-thumb active" data-target="artifact-img-festival"
-                  data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 1: Kneeling Carabao Procession">
+                  data-src="assets/Kneeling Carabao Festival Traditional Rites.jpg" aria-label="Photo 1: Kneeling Devotion with Regalia">
+                  <img src="assets/Kneeling Carabao Festival Traditional Rites.jpg" alt="Kneeling carabao with traditional yellow-red ruffles">
+                </button>
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival Church Rites.jpg" aria-label="Photo 2: Kneeling at Parish Church Facade">
+                  <img src="assets/Kneeling Carabao Festival Church Rites.jpg" alt="Carabao kneeling in front of church">
+                </button>
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival Parade Float.jpg" aria-label="Photo 3: Barangay Float No. 01">
+                  <img src="assets/Kneeling Carabao Festival Parade Float.jpg" alt="Decorated parade float and crowd">
+                </button>
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival Street Mural.jpg" aria-label="Photo 4: Public Carabao Street Mural">
+                  <img src="assets/Kneeling Carabao Festival Street Mural.jpg" alt="Colorful carabao street mural">
+                </button>
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 5: Town Parade Procession">
                   <img src="assets/Kneeling Carabao Festival.jpg" alt="Festival Procession">
                 </button>
                 <button class="switcher-thumb" data-target="artifact-img-festival"
                   data-src="assets/Kneeling Carabao Festival Other Photos 1.jpg"
-                  aria-label="Photo 2: Parade and Crowds">
+                  aria-label="Photo 6: Crowds and Spectators">
                   <img src="assets/Kneeling Carabao Festival Other Photos 1.jpg" alt="Parade and crowds">
-                </button>
-                <button class="switcher-thumb" data-target="artifact-img-festival"
-                  data-src="assets/San Isidro Church.jpg" aria-label="Photo 3: Parish Church Square">
-                  <img src="assets/San Isidro Church.jpg" alt="Church square">
                 </button>
               </div>
 
               <div class="artifact-caption">
                 <strong>Kneeling Carabao Festival</strong>
                 <p>Poblacion, Pulilan, Bulacan · Every 14th of May.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FESTIVAL VIDEO ARCHIVE SHOWCASE -->
+        <div class="festival-video-showcase" id="festival-video-archive">
+          <div class="video-showcase-header">
+            <div class="video-showcase-badge">
+              <span class="video-pulse-dot" aria-hidden="true"></span>
+              <span>CINEMATIC ARCHIVE · LIVING TRADITION IN MOTION</span>
+            </div>
+            <h3 class="video-showcase-title">Kneeling Carabao Festival <em>in Motion</em></h3>
+            <p class="video-showcase-lead">
+              Witness the sacred street celebration, intricate floral floats, and the moving moment when hundreds of carabaos kneel in solemn gratitude before the Diocesan Shrine of San Isidro Labrador.
+            </p>
+          </div>
+
+          <div class="video-player-dock-slot" id="slot-festival-video">
+            <div class="video-player-frame" id="frame-festival-video" data-player-id="yt-player-festival" data-title="Kneeling Carabao Festival">
+              <div class="mini-player-top-bar">
+                <div class="mini-player-info">
+                  <span class="mini-player-badge">NOW PLAYING</span>
+                  <span class="mini-player-title">Kneeling Carabao Festival</span>
+                </div>
+                <button class="mini-btn-close" title="Close and stop video" aria-label="Close and stop video">✕</button>
+              </div>
+
+              <div class="video-player-wrapper">
+                <iframe 
+                  id="yt-player-festival"
+                  src="https://www.youtube-nocookie.com/embed/IF6v9ZsYFtA?enablejsapi=1&amp;rel=0&amp;modestbranding=1" 
+                  title="Kneeling Carabao Festival 2024 | Pulilan, Bulacan - A Celebration of Faith, Culture, and Gratitude" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen 
+                  loading="lazy">
+                </iframe>
+              </div>
+
+              <div class="mini-player-controls-overlay">
+                <button class="mini-ctrl-btn mini-btn-pause" title="Pause / Play Video" aria-label="Pause or Play">
+                  <span class="mini-icon mini-icon-pause">❚❚</span>
+                  <span class="mini-icon mini-icon-play" style="display:none;">▶</span>
+                  <span class="mini-ctrl-label">Pause</span>
+                </button>
+                <button class="mini-ctrl-btn mini-btn-skip" title="Skip 10 Seconds Forward" aria-label="Skip forward 10 seconds">
+                  <span class="mini-icon">⏩</span>
+                  <span class="mini-ctrl-label">+10s</span>
+                </button>
+                <button class="mini-ctrl-btn mini-btn-stop" title="Stop &amp; Resume Background Music" aria-label="Stop video">
+                  <span class="mini-icon">⏹</span>
+                  <span class="mini-ctrl-label">Stop</span>
+                </button>
+              </div>
+
+              <div class="video-player-bar">
+                <div class="video-meta-info">
+                  <span class="video-play-badge">▶ LIVE DOCUMENTARY</span>
+                  <span class="video-credit">Coverage by <strong>Tagapagkwento Film Productions</strong></span>
+                  <span class="video-sep">·</span>
+                  <span class="video-sub">Kneeling Carabao Festival 2024 · Pulilan, Bulacan</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=IF6v9ZsYFtA" target="_blank" rel="noopener noreferrer" class="btn-video-yt" aria-label="Watch Kneeling Carabao Festival 2024 on YouTube">
+                  <span>Watch on YouTube</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
               </div>
             </div>
           </div>
@@ -1028,8 +1186,71 @@
                   together.
                 </p>
 
+                <h4 style="margin-top:24px;">Archival Photographic Collection</h4>
+                <p>Authentic visual documentation of the veneration rites, decorated carabao floats, and vibrant town murals of Pulilan.</p>
+
+                <div class="dossier-gallery-grid">
+                  <div class="dossier-gallery-item" role="button" tabindex="0"
+                    data-lightbox-src="assets/Kneeling Carabao Festival Traditional Rites.jpg"
+                    data-lightbox-tag="FESTIVAL TRADITION"
+                    data-lightbox-title="Traditional Kneeling with Regalia"
+                    data-lightbox-location="Poblacion Parade Route"
+                    data-lightbox-desc="Carabao decorated with ceremonial yellow and red leg ruffles and collar kneeling during the street procession before cheering spectators."
+                    data-lightbox-gallery='["assets/Kneeling Carabao Festival Traditional Rites.jpg","assets/Kneeling Carabao Festival Church Rites.jpg","assets/Kneeling Carabao Festival Parade Float.jpg","assets/Kneeling Carabao Festival Street Mural.jpg"]'>
+                    <img src="assets/Kneeling Carabao Festival Traditional Rites.jpg" alt="Carabao kneeling with rider and ruffles" loading="lazy">
+                    <div class="dossier-item-caption">
+                      <strong>Traditional Kneeling Rites</strong>
+                      <span>Devotional bow adorned in festive ruffles</span>
+                    </div>
+                  </div>
+
+                  <div class="dossier-gallery-item" role="button" tabindex="0"
+                    data-lightbox-src="assets/Kneeling Carabao Festival Church Rites.jpg"
+                    data-lightbox-tag="DEVOTIONAL RITES"
+                    data-lightbox-title="Carabao Kneeling in Front of the Parish Church"
+                    data-lightbox-location="San Isidro Labrador Parish Church Square"
+                    data-lightbox-desc="Carabao kneeling on the street directly before the historic stone church of San Isidro Labrador while farmers and devotees look on."
+                    data-lightbox-gallery='["assets/Kneeling Carabao Festival Traditional Rites.jpg","assets/Kneeling Carabao Festival Church Rites.jpg","assets/Kneeling Carabao Festival Parade Float.jpg","assets/Kneeling Carabao Festival Street Mural.jpg"]'>
+                    <img src="assets/Kneeling Carabao Festival Church Rites.jpg" alt="Carabao kneeling before church" loading="lazy">
+                    <div class="dossier-item-caption">
+                      <strong>Church Square Devotion</strong>
+                      <span>Kneeling before the Diocesan Shrine</span>
+                    </div>
+                  </div>
+
+                  <div class="dossier-gallery-item" role="button" tabindex="0"
+                    data-lightbox-src="assets/Kneeling Carabao Festival Parade Float.jpg"
+                    data-lightbox-tag="GRAND PARADE"
+                    data-lightbox-title="Barangay Parade Float No. 01"
+                    data-lightbox-location="Pulilan Main Street"
+                    data-lightbox-desc="Painted carabao pulling a vibrant floral and thatch kubo float with enthusiastic crowds lining the balconies and street barriers."
+                    data-lightbox-gallery='["assets/Kneeling Carabao Festival Traditional Rites.jpg","assets/Kneeling Carabao Festival Church Rites.jpg","assets/Kneeling Carabao Festival Parade Float.jpg","assets/Kneeling Carabao Festival Street Mural.jpg"]'>
+                    <img src="assets/Kneeling Carabao Festival Parade Float.jpg" alt="Parade float and painted carabao" loading="lazy">
+                    <div class="dossier-item-caption">
+                      <strong>Barangay Float Parade</strong>
+                      <span>Decorated kubo and hand-painted carabao</span>
+                    </div>
+                  </div>
+
+                  <div class="dossier-gallery-item" role="button" tabindex="0"
+                    data-lightbox-src="assets/Kneeling Carabao Festival Street Mural.jpg"
+                    data-lightbox-tag="PUBLIC ART"
+                    data-lightbox-title="Pulilan Carabao Heritage Street Mural"
+                    data-lightbox-location="Pulilan Town Proper"
+                    data-lightbox-desc="Public street mural depicting multi-colored carabaos celebrating Pulilan's cultural identity and artistic appreciation."
+                    data-lightbox-gallery='["assets/Kneeling Carabao Festival Traditional Rites.jpg","assets/Kneeling Carabao Festival Church Rites.jpg","assets/Kneeling Carabao Festival Parade Float.jpg","assets/Kneeling Carabao Festival Street Mural.jpg"]'>
+                    <img src="assets/Kneeling Carabao Festival Street Mural.jpg" alt="Carabao street art mural" loading="lazy">
+                    <div class="dossier-item-caption">
+                      <strong>Carabao Street Mural</strong>
+                      <span>Vibrant folk art along town walls</span>
+                    </div>
+                  </div>
+                </div>
+
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
+                  <li><a href="https://www.youtube.com/watch?v=IF6v9ZsYFtA" target="_blank"
+                      rel="noopener noreferrer">YouTube: Kneeling Carabao Festival 2024 Video Feature (Tagapagkwento Film Productions) &rarr;</a></li>
                   <li><a href="https://tempo.mb.com.ph/2026/05/13/kneeling-carabaos-to-wow-pulilan-fiesta-crowds"
                       target="_blank" rel="noopener noreferrer">Tempo / Manila Bulletin: Kneeling carabaos to wow
                       Pulilan fiesta crowds &rarr;</a></li>
@@ -1752,6 +1973,8 @@
     </div>
   </footer>
 
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <!-- Core Scripts -->
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
