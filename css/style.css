@@ -1427,20 +1427,30 @@ em {
 }
 
 .lightbox-img-counter {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
   font-family: var(--font-sans);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.lightbox-hint {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.38);
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+  text-align: center;
 }
 
 /* Right: detail panel */
 .lightbox-detail-side {
-  width: 360px;
+  width: 380px;
   min-width: 320px;
-  max-width: 400px;
-  background: rgba(248, 246, 244, 0.06);
+  max-width: 420px;
+  background: rgba(248, 246, 244, 0.05);
   border-left: 1px solid rgba(255,255,255,0.08);
-  padding: 80px 36px 40px 36px;
+  padding: 60px 36px 36px 36px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -1491,25 +1501,39 @@ em {
   margin-bottom: 24px;
 }
 
-.lightbox-thumb-strip {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.lightbox-gallery-section {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+.lightbox-gallery-heading {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #D9A55A;
+  margin-bottom: 12px;
+}
+
+.lightbox-thumb-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .lightbox-thumb {
-  width: 60px;
-  height: 44px;
-  border-radius: 4px;
+  width: 64px;
+  height: 48px;
+  border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid transparent;
-  opacity: 0.55;
+  border: 2px solid transparent;
+  opacity: 0.45;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
   flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
 }
 
 .lightbox-thumb img {
@@ -1519,10 +1543,16 @@ em {
   display: block;
 }
 
-.lightbox-thumb:hover,
+.lightbox-thumb:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
 .lightbox-thumb.active {
   opacity: 1;
   border-color: #D9A55A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 /* Artifact Switcher Row */
@@ -2461,5 +2491,689 @@ em {
     padding: 20px 20px 40px 20px;
   }
 }
+
+/* ==========================================================================
+   Interactive Pulilan Heritage Map & Cultural Trail
+   ========================================================================== */
+
+.heritage-map-section {
+  padding: 80px 0 70px 0;
+  background: var(--bg-canvas);
+  position: relative;
+}
+
+.map-section-header {
+  margin-bottom: 28px;
+  max-width: 800px;
+}
+
+.map-badge-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+  background: rgba(141, 81, 25, 0.08);
+  border: 1px solid rgba(141, 81, 25, 0.18);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+.map-section-title {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 500;
+  color: var(--text-ink);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.map-section-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-terracotta);
+}
+
+.map-section-desc {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Cluster Nav Filter Pills */
+.map-cluster-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.map-cluster-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all var(--ease-natural);
+}
+
+.map-cluster-pill:hover {
+  border-color: var(--accent-terracotta);
+  color: var(--text-ink);
+  transform: translateY(-1px);
+}
+
+.map-cluster-pill.active {
+  background: var(--text-ink);
+  border-color: var(--text-ink);
+  color: #FFFFFF;
+}
+
+.cluster-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #A09890;
+}
+
+.map-cluster-pill.active .cluster-dot {
+  background: var(--accent-terracotta);
+}
+
+.dot-poblacion { background: #8D5119; }
+.dot-inaon { background: #2D4F3E; }
+.dot-river { background: #3C687E; }
+
+/* 2-Column Cartographic Layout */
+.heritage-map-layout {
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* Left Column: Scrollable Site Directory */
+.map-sites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.map-sites-list::-webkit-scrollbar {
+  width: 5px;
+}
+.map-sites-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+.map-sites-list::-webkit-scrollbar-thumb {
+  background: rgba(141, 81, 25, 0.25);
+  border-radius: 4px;
+}
+.map-sites-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-terracotta);
+}
+
+.map-site-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.22s ease;
+  position: relative;
+  text-align: left;
+}
+
+.map-site-card:hover {
+  border-color: rgba(141, 81, 25, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(58, 53, 48, 0.05);
+}
+
+.map-site-card.active {
+  border-color: var(--accent-terracotta);
+  background: rgba(254, 252, 250, 1);
+  box-shadow: 0 4px 16px rgba(141, 81, 25, 0.1);
+  border-left: 4px solid var(--accent-terracotta);
+}
+
+.site-card-thumb {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-muted);
+}
+
+.site-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.site-card-num {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(20, 18, 16, 0.75);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+
+.site-card-body {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-zone-tag {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+  margin-bottom: 3px;
+}
+
+.site-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-ink);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.site-card-desc {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.site-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 0.72rem;
+}
+
+.site-nav-hint {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.site-chapter-link {
+  color: var(--accent-terracotta);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(141, 81, 25, 0.08);
+  transition: all 0.2s ease;
+}
+
+.site-chapter-link:hover {
+  background: var(--accent-terracotta);
+  color: #FFFFFF;
+}
+
+/* Right Column: Google Maps Frame & Canvas */
+.map-display-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.map-canvas-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(58, 53, 48, 0.06);
+  position: relative;
+}
+
+.map-canvas-header {
+  padding: 12px 18px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-delicate);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.map-live-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-ink);
+}
+
+.live-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2E7D32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.5); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(46, 125, 50, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+}
+
+.map-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-map-control {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-map-control:hover {
+  background: var(--text-ink);
+  color: #FFFFFF;
+  border-color: var(--text-ink);
+}
+
+.btn-map-external {
+  color: var(--accent-terracotta);
+  border-color: rgba(141, 81, 25, 0.2);
+  background: rgba(141, 81, 25, 0.04);
+}
+
+.btn-map-external:hover {
+  background: var(--accent-terracotta);
+  color: #FFFFFF;
+  border-color: var(--accent-terracotta);
+}
+
+.map-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  background: #E5E3DF;
+}
+
+.map-iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating Spot Ribbon */
+.map-spot-ribbon {
+  padding: 14px 18px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-delicate);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ribbon-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ribbon-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ribbon-details {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.ribbon-badge {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+  margin-bottom: 2px;
+}
+
+.ribbon-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-ink);
+  line-height: 1.25;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ribbon-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.ribbon-cta {
+  flex-shrink: 0;
+}
+
+.btn-ribbon-chapter {
+  background: var(--accent-terracotta);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.btn-ribbon-chapter:hover {
+  background: var(--text-ink);
+  transform: translateY(-1px);
+}
+
+/* Schematic Spatial Wayfinding Bar */
+.cartographic-trail-guide {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-delicate);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.trail-guide-header {
+  margin-bottom: 12px;
+}
+
+.trail-guide-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.trail-guide-nodes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.trail-node {
+  flex: 1;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.trail-node:hover,
+.trail-node.active {
+  border-color: var(--accent-terracotta);
+  background: rgba(141, 81, 25, 0.03);
+}
+
+.node-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+  margin-bottom: 2px;
+}
+
+.trail-node strong {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  color: var(--text-ink);
+  margin-bottom: 2px;
+}
+
+.trail-node span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.trail-connector {
+  font-size: 1.2rem;
+  color: var(--border-delicate);
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Responsive adjustments for Map */
+@media (max-width: 1024px) {
+  .heritage-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-sites-list {
+    max-height: 380px;
+  }
+
+  .map-iframe-wrapper {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trail-guide-nodes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .trail-connector {
+    display: none;
+  }
+
+  .map-spot-ribbon {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ribbon-cta {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .btn-ribbon-chapter {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Custom Editorial Theme Cursor (Terracotta & Gold Medallion Tracker)
+   ========================================================================== */
+
+/* Hide custom cursor elements by default on touch/mobile devices */
+.custom-cursor-dot,
+.custom-cursor-ring {
+  display: none;
+}
+
+/* Enable only for devices with a fine pointer (desktop mouse/trackpad) */
+@media (pointer: fine) {
+  .custom-cursor-dot {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-terracotta);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .custom-cursor-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid rgba(141, 81, 25, 0.45);
+    background: rgba(217, 165, 90, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+                height 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+                background 0.25s ease,
+                border-color 0.25s ease,
+                border-width 0.25s ease,
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .cursor-ring-text {
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+
+  /* Visible State */
+  .custom-cursor-dot.visible,
+  .custom-cursor-ring.visible {
+    opacity: 1;
+  }
+
+  /* Interactive Hover State (Links, Buttons, Cards, Controls) */
+  .custom-cursor-ring.hover-interactive {
+    width: 50px;
+    height: 50px;
+    border-color: var(--accent-terracotta);
+    border-width: 2px;
+    background: rgba(141, 81, 25, 0.12);
+    box-shadow: 0 0 16px rgba(141, 81, 25, 0.25);
+  }
+
+  .custom-cursor-dot.hover-interactive {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: #D9A55A;
+  }
+
+  /* View Photo / Zoom Hover State (Photos, Artifact Stage, Lightbox) */
+  .custom-cursor-ring.hover-view {
+    width: 64px;
+    height: 64px;
+    border-color: #D9A55A;
+    border-width: 2px;
+    background: rgba(20, 18, 16, 0.85);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .custom-cursor-ring.hover-view .cursor-ring-text {
+    opacity: 1;
+    transform: scale(1);
+    color: #F7D89B;
+  }
+
+  .custom-cursor-dot.hover-view {
+    opacity: 0;
+  }
+
+  /* Click / Active Press State */
+  .custom-cursor-ring.click-active {
+    width: 26px;
+    height: 26px;
+    border-color: #D9A55A;
+    background: rgba(141, 81, 25, 0.3);
+  }
+
+  .custom-cursor-dot.click-active {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+
 
 

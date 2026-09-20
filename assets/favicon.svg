@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="terracottaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9E5E24"/>
+      <stop offset="100%" stop-color="#6F3910"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9E2B2"/>
+      <stop offset="100%" stop-color="#D49942"/>
+    </linearGradient>
+  </defs>
+  <!-- Base Medallion -->
+  <circle cx="32" cy="32" r="30" fill="url(#terracottaGrad)" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <!-- Inner Ornamental Ring -->
+  <circle cx="32" cy="32" r="26.5" fill="none" stroke="rgba(249, 226, 178, 0.45)" stroke-width="0.8" stroke-dasharray="2.5 2"/>
+  
+  <!-- Stylized Carabao Crest -->
+  <!-- Sweeping Horns -->
+  <path d="M 13 25 C 16 13, 26 12, 32 18 C 38 12, 48 13, 51 25 C 44 20, 38 21.5, 32 26 C 26 21.5, 20 20, 13 25 Z" fill="url(#goldGrad)"/>
+  <!-- Ears -->
+  <path d="M 19 28 C 16 32, 18 35, 23 32 Z" fill="url(#goldGrad)"/>
+  <path d="M 45 28 C 48 32, 46 35, 41 32 Z" fill="url(#goldGrad)"/>
+  <!-- Head & Muzzle -->
+  <path d="M 26 25 L 38 25 L 36 43 C 36 46, 28 46, 28 43 Z" fill="url(#goldGrad)"/>
+  <!-- Eyes -->
+  <ellipse cx="28.5" cy="30" rx="1.2" ry="0.8" fill="#5A2E0A"/>
+  <ellipse cx="35.5" cy="30" rx="1.2" ry="0.8" fill="#5A2E0A"/>
+  <!-- Nostrils -->
+  <circle cx="30" cy="42" r="0.9" fill="#5A2E0A"/>
+  <circle cx="34" cy="42" r="0.9" fill="#5A2E0A"/>
+  <!-- Agricultural Sheaf Accent Under Muzzle -->
+  <path d="M 24 49 C 28 47, 32 48, 32 48 C 32 48, 36 47, 40 49 C 36 51, 32 50, 32 50 C 32 50, 28 51, 24 49 Z" fill="url(#goldGrad)"/>
+  <!-- Crown Star -->
+  <polygon points="32,7.5 33.2,10.2 36,10.5 33.8,12.5 34.5,15.2 32,13.8 29.5,15.2 30.2,12.5 28,10.5 30.8,10.2" fill="#FFF2D6"/>
+</svg>

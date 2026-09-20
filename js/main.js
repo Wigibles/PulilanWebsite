@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSectionDossiers();
   initMobileDrawer();
   initImageLightbox();
+  initHeritageMapController();
+  initCustomThemeCursor();
 });
 
 /* ==========================================================================
@@ -88,6 +90,13 @@ function initSideTrackerScrollSpy() {
         currentIndex = 1;
         currentId = sections[0].getAttribute('id');
       }
+    }
+
+    // Safeguard for very bottom of page: highlight the last section
+    if (scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80 && sections.length > 0) {
+      const lastSec = sections[sections.length - 1];
+      currentId = lastSec.getAttribute('id');
+      currentIndex = sections.length;
     }
 
     // Update side tracker links active state
@@ -241,6 +250,8 @@ function initArtifactPhotoSwitchers() {
 
   switchers.forEach(row => {
     const thumbs = row.querySelectorAll('.switcher-thumb');
+    const card = row.closest('.artifact-card');
+    const stage = card ? card.querySelector('.artifact-photo-stage') : null;
 
     thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
@@ -254,6 +265,10 @@ function initArtifactPhotoSwitchers() {
             mainImg.src = newSrc;
             mainImg.style.opacity = '1';
           }, 150);
+        }
+
+        if (stage && newSrc) {
+          stage.setAttribute('data-lightbox-src', newSrc);
         }
 
         thumbs.forEach(t => t.classList.remove('active'));
@@ -675,23 +690,58 @@ function initImageLightbox() {
 
   let currentGallery = [];
   let currentIndex = 0;
+  let currentStage = null;
 
   function openLightbox(stage) {
-    const src = stage.getAttribute('data-lightbox-src') || '';
+    currentStage = stage;
+    const card = stage.closest('.artifact-card') || stage.closest('.exhibition-chapter');
+    
+    // Find what image is currently visible on the card
+    const activeImg = stage.querySelector('.active-artifact-img');
+    const activeSrc = activeImg ? activeImg.getAttribute('src') : (stage.getAttribute('data-lightbox-src') || '');
+    
     const tag = stage.getAttribute('data-lightbox-tag') || '';
     const title = stage.getAttribute('data-lightbox-title') || '';
     const location = stage.getAttribute('data-lightbox-location') || '';
     const desc = stage.getAttribute('data-lightbox-desc') || '';
+
     let gallery = [];
-    try {
-      gallery = JSON.parse(stage.getAttribute('data-lightbox-gallery') || '[]');
-    } catch (e) {
-      gallery = src ? [src] : [];
+    
+    // 1. Gather all photos from switcher thumbs on this part/card
+    if (card) {
+      const thumbs = card.querySelectorAll('.switcher-thumb[data-src]');
+      if (thumbs.length > 0) {
+        gallery = Array.from(thumbs).map(btn => btn.getAttribute('data-src')).filter(Boolean);
+      }
     }
 
-    if (!gallery.length && src) gallery = [src];
+    // 2. If switcher thumbs are not present or empty, check data-lightbox-gallery attribute
+    if (!gallery.length) {
+      try {
+        gallery = JSON.parse(stage.getAttribute('data-lightbox-gallery') || '[]');
+      } catch (e) {
+        gallery = [];
+      }
+    }
+
+    // 3. Fallback to activeSrc or stage data-lightbox-src
+    if (!gallery.length && activeSrc) {
+      gallery = [activeSrc];
+    }
+
+    // Deduplicate while preserving order
+    gallery = Array.from(new Set(gallery));
     currentGallery = gallery;
-    currentIndex = gallery.indexOf(src);
+
+    // Determine current index based on the currently displayed image
+    currentIndex = -1;
+    if (activeSrc) {
+      currentIndex = gallery.indexOf(activeSrc);
+      if (currentIndex === -1) {
+        const activeFile = activeSrc.split('/').pop().toLowerCase();
+        currentIndex = gallery.findIndex(item => item.split('/').pop().toLowerCase() === activeFile);
+      }
+    }
     if (currentIndex < 0) currentIndex = 0;
 
     // Fill details
@@ -704,17 +754,22 @@ function initImageLightbox() {
     if (thumbStrip) {
       thumbStrip.innerHTML = '';
       gallery.forEach((imgSrc, idx) => {
-        const thumb = document.createElement('div');
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
         thumb.className = 'lightbox-thumb' + (idx === currentIndex ? ' active' : '');
-        thumb.innerHTML = `<img src="${imgSrc}" alt="Gallery thumbnail ${idx + 1}" loading="lazy">`;
-        thumb.addEventListener('click', () => setLightboxImage(idx));
+        thumb.setAttribute('aria-label', `View photo ${idx + 1} of ${gallery.length}`);
+        thumb.innerHTML = `<img src="${imgSrc}" alt="Gallery photo ${idx + 1}" loading="lazy">`;
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          setLightboxImage(idx);
+        });
         thumbStrip.appendChild(thumb);
       });
     }
 
     setLightboxImage(currentIndex, false);
 
-    // Open
+    // Open backdrop
     backdrop.setAttribute('aria-hidden', 'false');
     backdrop.style.display = 'flex';
     requestAnimationFrame(() => {
@@ -727,7 +782,8 @@ function initImageLightbox() {
 
   function setLightboxImage(idx, animate = true) {
     if (!currentGallery.length) return;
-    currentIndex = Math.max(0, Math.min(idx, currentGallery.length - 1));
+    // Circular navigation: wraps around seamlessly
+    currentIndex = (idx % currentGallery.length + currentGallery.length) % currentGallery.length;
     const src = currentGallery[currentIndex];
 
     if (animate) {
@@ -735,24 +791,42 @@ function initImageLightbox() {
       setTimeout(() => {
         mainImg.src = src;
         mainImg.style.opacity = '1';
-      }, 150);
+      }, 120);
     } else {
       mainImg.src = src;
+      mainImg.style.opacity = '1';
     }
 
     // Update counter
     if (counter) counter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
 
-    // Update thumb active state
+    // Update thumb active state in lightbox
     if (thumbStrip) {
       thumbStrip.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
         t.classList.toggle('active', i === currentIndex);
       });
     }
 
+    // Synchronize back to the section card on the page
+    if (currentStage) {
+      const card = currentStage.closest('.artifact-card');
+      const cardActiveImg = currentStage.querySelector('.active-artifact-img');
+      if (cardActiveImg) {
+        cardActiveImg.src = src;
+      }
+      currentStage.setAttribute('data-lightbox-src', src);
+      if (card) {
+        card.querySelectorAll('.switcher-thumb').forEach(thumb => {
+          const thumbSrc = thumb.getAttribute('data-src');
+          const isMatch = thumbSrc === src || (thumbSrc && src && thumbSrc.split('/').pop() === src.split('/').pop());
+          thumb.classList.toggle('active', isMatch);
+        });
+      }
+    }
+
     // Show/hide nav buttons
-    if (prevBtn) prevBtn.style.visibility = currentGallery.length > 1 ? '' : 'hidden';
-    if (nextBtn) nextBtn.style.visibility = currentGallery.length > 1 ? '' : 'hidden';
+    if (prevBtn) prevBtn.style.visibility = currentGallery.length > 1 ? 'visible' : 'hidden';
+    if (nextBtn) nextBtn.style.visibility = currentGallery.length > 1 ? 'visible' : 'hidden';
   }
 
   function closeLightbox() {
@@ -778,15 +852,35 @@ function initImageLightbox() {
 
   // Close controls
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  
+  // Close if clicking outside main content
   backdrop.addEventListener('click', (e) => {
-    if (e.target === backdrop || e.target === backdrop.querySelector('.lightbox-inner')) {
-      // Only close if clicking dark area, not inner content
+    if (e.target === backdrop || e.target.classList.contains('lightbox-img-side') || e.target.classList.contains('lightbox-inner')) {
+      closeLightbox();
     }
   });
 
-  // Navigation
-  if (prevBtn) prevBtn.addEventListener('click', () => setLightboxImage(currentIndex - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => setLightboxImage(currentIndex + 1));
+  // Click main image to advance
+  if (mainImg) {
+    mainImg.style.cursor = 'pointer';
+    mainImg.title = 'Click to view next photo';
+    mainImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentGallery.length > 1) {
+        setLightboxImage(currentIndex + 1);
+      }
+    });
+  }
+
+  // Navigation buttons
+  if (prevBtn) prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLightboxImage(currentIndex - 1);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLightboxImage(currentIndex + 1);
+  });
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
@@ -796,11 +890,297 @@ function initImageLightbox() {
     if (e.key === 'ArrowRight') setLightboxImage(currentIndex + 1);
   });
 
-  // Close button explicit
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeLightbox();
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const imgSide = backdrop.querySelector('.lightbox-img-side');
+  if (imgSide) {
+    imgSide.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    imgSide.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 45) {
+        // Swiped left -> next
+        setLightboxImage(currentIndex + 1);
+      } else if (touchEndX > touchStartX + 45) {
+        // Swiped right -> prev
+        setLightboxImage(currentIndex - 1);
+      }
+    }, { passive: true });
+  }
+}
+
+/* ==========================================================================
+   12. Interactive Pulilan Heritage Map & Google Maps Controller
+   ========================================================================== */
+
+function initHeritageMapController() {
+  const mapIframe = document.getElementById('heritage-google-map');
+  const locationNameEl = document.getElementById('map-header-location-name');
+  const externalLinkEl = document.getElementById('btn-open-external-gmaps');
+  const resetBtn = document.getElementById('btn-reset-town-map');
+
+  const ribbonImg = document.getElementById('ribbon-img');
+  const ribbonBadge = document.getElementById('ribbon-badge');
+  const ribbonTitle = document.getElementById('ribbon-title');
+  const ribbonLocation = document.getElementById('ribbon-location');
+  const ribbonChapterBtn = document.getElementById('ribbon-chapter-btn');
+
+  const siteCards = document.querySelectorAll('.map-site-card');
+  const clusterPills = document.querySelectorAll('.map-cluster-pill');
+  const trailNodes = document.querySelectorAll('.trail-node');
+
+  if (!mapIframe || !siteCards.length) return;
+
+  function selectSite(card) {
+    siteCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    const title = card.getAttribute('data-title') || '';
+    const query = card.getAttribute('data-query') || '';
+    const location = card.getAttribute('data-location') || '';
+    const badge = card.getAttribute('data-badge') || '';
+    const img = card.getAttribute('data-img') || '';
+    const chapter = card.getAttribute('data-chapter') || '';
+    const zoom = card.getAttribute('data-zoom') || '16';
+
+    // Update iframe source
+    const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
+    mapIframe.src = mapUrl;
+
+    // Update header info
+    if (locationNameEl) {
+      locationNameEl.textContent = `${title} — ${location.split(',')[0]}`;
+    }
+    if (externalLinkEl) {
+      externalLinkEl.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    }
+
+    // Update ribbon
+    if (ribbonImg && img) ribbonImg.src = img;
+    if (ribbonBadge) ribbonBadge.textContent = badge;
+    if (ribbonTitle) ribbonTitle.textContent = title;
+    if (ribbonLocation) ribbonLocation.textContent = location;
+    if (ribbonChapterBtn && chapter) ribbonChapterBtn.href = chapter;
+
+    // Highlight corresponding cluster trail node
+    const cluster = card.getAttribute('data-cluster');
+    trailNodes.forEach(node => {
+      node.classList.toggle('active', node.getAttribute('data-filter') === cluster);
+    });
+  }
+
+  // Card click & keyboard interaction
+  siteCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // If user clicked the "Chapter ->" link directly, allow standard navigation
+      if (e.target.closest('.site-chapter-link')) return;
+      selectSite(card);
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectSite(card);
+      }
+    });
+  });
+
+  // Cluster filter buttons
+  function filterCluster(clusterKey) {
+    clusterPills.forEach(pill => {
+      const isActive = pill.getAttribute('data-cluster') === clusterKey;
+      pill.classList.toggle('active', isActive);
+      pill.setAttribute('aria-selected', isActive);
+    });
+
+    let firstVisible = null;
+    siteCards.forEach(card => {
+      const cardCluster = card.getAttribute('data-cluster');
+      const matches = clusterKey === 'all' || cardCluster === clusterKey;
+      card.style.display = matches ? 'flex' : 'none';
+      if (matches && !firstVisible) firstVisible = card;
+    });
+
+    trailNodes.forEach(node => {
+      node.classList.toggle('active', node.getAttribute('data-filter') === clusterKey);
+    });
+
+    // Auto update map focus for the cluster
+    if (clusterKey === 'inaon') {
+      mapIframe.src = 'https://maps.google.com/maps?q=Inaon,+Pulilan,+Bulacan&t=&z=14&ie=UTF8&iwloc=&output=embed';
+      if (locationNameEl) locationNameEl.textContent = 'Barangay Inaon Agri-Equestrian Cluster';
+      if (externalLinkEl) externalLinkEl.href = 'https://www.google.com/maps/search/?api=1&query=Inaon,+Pulilan,+Bulacan';
+    } else if (clusterKey === 'river') {
+      mapIframe.src = 'https://maps.google.com/maps?q=Dentongs+Fried+Itik,+Pulilan,+Bulacan&t=&z=15&ie=UTF8&iwloc=&output=embed';
+      if (locationNameEl) locationNameEl.textContent = 'Angat Riverbank Corridor & Highway';
+      if (externalLinkEl) externalLinkEl.href = 'https://www.google.com/maps/search/?api=1&query=Dentongs+Fried+Itik,+Pulilan,+Bulacan';
+    } else if (clusterKey === 'poblacion') {
+      mapIframe.src = 'https://maps.google.com/maps?q=Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan&t=&z=16&ie=UTF8&iwloc=&output=embed';
+      if (locationNameEl) locationNameEl.textContent = 'Poblacion Heritage Core';
+      if (externalLinkEl) externalLinkEl.href = 'https://www.google.com/maps/search/?api=1&query=Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan';
+    } else if (firstVisible) {
+      selectSite(firstVisible);
+    }
+  }
+
+  clusterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterCluster(pill.getAttribute('data-cluster'));
+    });
+  });
+
+  trailNodes.forEach(node => {
+    node.addEventListener('click', () => {
+      const filter = node.getAttribute('data-filter');
+      filterCluster(filter);
+    });
+  });
+
+  // Reset to full municipality overview
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      mapIframe.src = 'https://maps.google.com/maps?q=Pulilan,+Bulacan&t=&z=14&ie=UTF8&iwloc=&output=embed';
+      if (locationNameEl) locationNameEl.textContent = 'Pulilan, Bulacan — Full Municipality Overview';
+      if (externalLinkEl) externalLinkEl.href = 'https://maps.google.com/?q=Pulilan,+Bulacan';
+      clusterPills.forEach(pill => {
+        const isAll = pill.getAttribute('data-cluster') === 'all';
+        pill.classList.toggle('active', isAll);
+        pill.setAttribute('aria-selected', isAll);
+      });
+      siteCards.forEach(card => card.style.display = 'flex');
+      trailNodes.forEach(node => node.classList.remove('active'));
     });
   }
 }
+
+/* ==========================================================================
+   13. Custom Editorial Theme Cursor (Terracotta & Gold Medallion Tracker)
+   ========================================================================== */
+
+function initCustomThemeCursor() {
+  // Only activate on devices with a mouse/fine pointer
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  const ringText = document.getElementById('cursor-text');
+
+  if (!dot || !ring) return;
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let ringX = -100;
+  let ringY = -100;
+  let isVisible = false;
+  let isHoveringInteractive = false;
+  let isHoveringView = false;
+  let rafId = null;
+
+  // Track mouse position instantaneously for the center dot
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!isVisible) {
+      isVisible = true;
+      dot.classList.add('visible');
+      ring.classList.add('visible');
+      ringX = mouseX;
+      ringY = mouseY;
+    }
+
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+  }, { passive: true });
+
+  // Smooth lerp (linear interpolation) for follower ring
+  function updateRing() {
+    const ease = 0.18;
+    ringX += (mouseX - ringX) * ease;
+    ringY += (mouseY - ringY) * ease;
+
+    ring.style.left = `${ringX.toFixed(2)}px`;
+    ring.style.top = `${ringY.toFixed(2)}px`;
+
+    rafId = requestAnimationFrame(updateRing);
+  }
+  rafId = requestAnimationFrame(updateRing);
+
+  // Smooth hide/reveal on mouse window boundary
+  document.addEventListener('mouseleave', () => {
+    dot.classList.remove('visible');
+    ring.classList.remove('visible');
+    isVisible = false;
+  });
+
+  document.addEventListener('mouseenter', () => {
+    dot.classList.add('visible');
+    ring.classList.add('visible');
+    isVisible = true;
+  });
+
+  // Tactile click states
+  window.addEventListener('mousedown', () => {
+    dot.classList.add('click-active');
+    ring.classList.add('click-active');
+  });
+
+  window.addEventListener('mouseup', () => {
+    dot.classList.remove('click-active');
+    ring.classList.remove('click-active');
+  });
+
+  // Delegated interactive hover states
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    if (!target) return;
+
+    // Expandable photo hover
+    const photoTarget = target.closest('.artifact-photo-stage, .lightbox-main-img, .hero-carabao-stage, .dish-photo-frame');
+    if (photoTarget) {
+      if (!isHoveringView) {
+        isHoveringView = true;
+        ring.classList.add('hover-view');
+        dot.classList.add('hover-view');
+        if (ringText) {
+          ringText.textContent = photoTarget.classList.contains('lightbox-main-img') ? 'NEXT' : 'VIEW';
+        }
+      }
+      return;
+    }
+
+    // Interactive button/link hover
+    const interactiveTarget = target.closest('a, button, .map-site-card, .switcher-thumb, .side-tracker-link, [role="button"], input, select, textarea');
+    if (interactiveTarget) {
+      if (!isHoveringInteractive) {
+        isHoveringInteractive = true;
+        ring.classList.add('hover-interactive');
+        dot.classList.add('hover-interactive');
+      }
+      return;
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target;
+    if (!target) return;
+
+    const photoTarget = target.closest('.artifact-photo-stage, .lightbox-main-img, .hero-carabao-stage, .dish-photo-frame');
+    if (photoTarget && isHoveringView) {
+      isHoveringView = false;
+      ring.classList.remove('hover-view');
+      dot.classList.remove('hover-view');
+      if (ringText) ringText.textContent = '';
+    }
+
+    const interactiveTarget = target.closest('a, button, .map-site-card, .switcher-thumb, .side-tracker-link, [role="button"], input, select, textarea');
+    if (interactiveTarget && isHoveringInteractive) {
+      isHoveringInteractive = false;
+      ring.classList.remove('hover-interactive');
+      dot.classList.remove('hover-interactive');
+    }
+  });
+}
+
+

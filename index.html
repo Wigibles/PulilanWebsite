@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pulilan: Kasaysayan at Pamana — Cultural Monograph</title>
-  <meta name="description" content="A curated cultural and architectural monograph of Pulilan, Bulacan. Discover the Diocesan Shrine of San Isidro Labrador, the Kneeling Carabao Festival, historic landmarks, and heirloom delicacies.">
-  <meta name="keywords" content="Pulilan Bulacan, Diocesan Shrine San Isidro Labrador, Kneeling Carabao Festival, Pulong Kabyawan, Spanish Colonial Era Cemetery, Campo Santo, North Polo Club, Casa San Francisco, Sumang Bulagta, Fried Itik">
+  <meta name="description"
+    content="A curated cultural and architectural monograph of Pulilan, Bulacan. Discover the Diocesan Shrine of San Isidro Labrador, the Kneeling Carabao Festival, historic landmarks, and heirloom delicacies.">
+  <meta name="keywords"
+    content="Pulilan Bulacan, Diocesan Shrine San Isidro Labrador, Kneeling Carabao Festival, Pulong Kabyawan, Spanish Colonial Era Cemetery, Campo Santo, North Polo Club, Casa San Francisco, Sumang Bulagta, Fried Itik">
 
   <!-- Preload Critical Hero Image -->
   <link rel="preload" as="image" href="assets/Carabao.png">
@@ -13,12 +16,25 @@
   <!-- Google Fonts: Editorial Serif + Modern Humanist Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Tab Icon (Favicon) -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+  <!-- Custom Editorial Theme Cursor Elements -->
+  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true">
+    <span class="cursor-ring-text" id="cursor-text"></span>
+  </div>
 
   <!-- ==========================================================================
        1. Curatorial Masthead (Museum Exhibition Top Bar)
@@ -39,7 +55,8 @@
       </div>
 
       <div class="masthead-cta">
-        <button class="btn-ambient-sound" id="btn-ambient-sound" aria-label="Toggle Ambient Music" title="Click to toggle traditional acoustic ambient music">
+        <button class="btn-ambient-sound" id="btn-ambient-sound" aria-label="Toggle Ambient Music"
+          title="Click to toggle traditional acoustic ambient music">
           <span class="sound-wave-anim" aria-hidden="true">
             <span class="wave-bar"></span>
             <span class="wave-bar"></span>
@@ -69,13 +86,15 @@
 
       <ul class="side-tracker-list" id="side-tracker-list">
         <li>
-          <a href="#church" class="side-tracker-link active" data-target="church" aria-label="Room 01: San Isidro Church">
+          <a href="#church" class="side-tracker-link active" data-target="church"
+            aria-label="Room 01: San Isidro Church">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">01</span> San Isidro Church</span>
           </a>
         </li>
         <li>
-          <a href="#pulong-kabyawan" class="side-tracker-link" data-target="pulong-kabyawan" aria-label="Room 02: Pulong Kabyawan">
+          <a href="#pulong-kabyawan" class="side-tracker-link" data-target="pulong-kabyawan"
+            aria-label="Room 02: Pulong Kabyawan">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">02</span> Pulong Kabyawan</span>
           </a>
@@ -87,31 +106,36 @@
           </a>
         </li>
         <li>
-          <a href="#north-polo-club" class="side-tracker-link" data-target="north-polo-club" aria-label="Room 04: The North Polo Club">
+          <a href="#north-polo-club" class="side-tracker-link" data-target="north-polo-club"
+            aria-label="Room 04: The North Polo Club">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">04</span> North Polo Club</span>
           </a>
         </li>
         <li>
-          <a href="#casa-san-francisco" class="side-tracker-link" data-target="casa-san-francisco" aria-label="Room 05: Casa San Francisco">
+          <a href="#casa-san-francisco" class="side-tracker-link" data-target="casa-san-francisco"
+            aria-label="Room 05: Casa San Francisco">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">05</span> Casa San Francisco</span>
           </a>
         </li>
         <li>
-          <a href="#festival" class="side-tracker-link" data-target="festival" aria-label="Room 06: Kneeling Carabao Festival">
+          <a href="#festival" class="side-tracker-link" data-target="festival"
+            aria-label="Room 06: Kneeling Carabao Festival">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">06</span> Kneeling Festival</span>
           </a>
         </li>
         <li>
-          <a href="#sumang-bulagta" class="side-tracker-link" data-target="sumang-bulagta" aria-label="Room 07: Sumang Bulagta">
+          <a href="#sumang-bulagta" class="side-tracker-link" data-target="sumang-bulagta"
+            aria-label="Room 07: Sumang Bulagta">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">07</span> Sumang Bulagta</span>
           </a>
         </li>
         <li>
-          <a href="#fried-itik" class="side-tracker-link" data-target="fried-itik" aria-label="Room 08: Dentong's Fried Itik">
+          <a href="#fried-itik" class="side-tracker-link" data-target="fried-itik"
+            aria-label="Room 08: Dentong's Fried Itik">
             <span class="tracker-dot"></span>
             <span class="tracker-flyout"><span class="flyout-num">08</span> Fried Itik</span>
           </a>
@@ -124,9 +148,10 @@
   <div class="mobile-chapter-drawer" id="mobile-chapter-drawer" aria-hidden="true">
     <div class="drawer-inner-links">
       <div class="drawer-header-line">
-        <span>EXHIBITION ROOMS (01–08)</span>
+        <span>EXHIBITION ROOMS &amp; MAP</span>
         <button id="close-mobile-drawer" aria-label="Close Index">✕</button>
       </div>
+      <a href="#heritage-map" class="mobile-pill mobile-pill-map" style="color:var(--accent-terracotta); font-weight:600;"><span>🗺</span> Interactive Heritage Map</a>
       <a href="#church" class="mobile-pill"><span>01</span> San Isidro Labrador Church</a>
       <a href="#pulong-kabyawan" class="mobile-pill"><span>02</span> Pulong Kabyawan</a>
       <a href="#campo-santo" class="mobile-pill"><span>03</span> Spanish Colonial Cemetery (Campo Santo)</a>
@@ -144,21 +169,23 @@
          ========================================================================== -->
     <section class="hero-editorial-revamp" id="overview">
       <div class="container hero-editorial-grid">
-        
+
         <!-- Left Column: Editorial Headline & Cultural Context -->
         <div class="hero-text-col">
-          <div class="curatorial-badge">SPECIAL MONOGRAPH · BAYAN NG PULILAN</div>
+          <div class="curatorial-badge">BAYAN NG PULILAN</div>
           <h1 class="hero-title">
             Where the Carabaos<br>
             Kneel before<br>
             <span class="hero-title-italic">Spanish Stone.</span>
           </h1>
           <p class="hero-lead-text">
-            The Diocesan Shrine of San Isidro Labrador, centuries of agrarian devotion, 18th-century neoclassical stone masonry, and living community heritage along the fertile banks of the Angat River in Pulilan, Bulacan.
+            The Diocesan Shrine of San Isidro Labrador, centuries of agrarian devotion, 18th-century neoclassical stone
+            masonry, and living community heritage along the fertile banks of the Angat River in Pulilan, Bulacan.
           </p>
 
           <div class="hero-quick-anchors">
             <a href="#church" class="btn-hero-primary">Start Cultural Tour &rarr;</a>
+            <a href="#heritage-map" class="btn-hero-secondary">Heritage Map &amp; Trail 🗺</a>
             <a href="#festival" class="btn-hero-secondary">The Kneeling Tradition</a>
           </div>
 
@@ -189,11 +216,13 @@
         <div class="hero-carabao-col">
           <div class="hero-carabao-stage">
             <!-- Organic transparent cutout standing freely with soft shadow -->
-            <img src="assets/Carabao.png" alt="Working carabao with traditional wooden yoke in Pulilan, Bulacan" class="hero-carabao-standalone">
+            <img src="assets/Carabao.png" alt="Working carabao with traditional wooden yoke in Pulilan, Bulacan"
+              class="hero-carabao-standalone">
             <div class="hero-carabao-shadow" aria-hidden="true"></div>
             <div class="hero-caption-note">
               <span class="note-bullet">🌾</span>
-              <span><strong>Anito ng Bukid</strong> · The faithful partner of Bulakenyo farmers, trained to kneel in thanksgiving and humility.</span>
+              <span><strong>Anito ng Bukid</strong> · The faithful partner of Bulakenyo farmers, trained to kneel in
+                thanksgiving and humility.</span>
             </div>
           </div>
         </div>
@@ -220,7 +249,12 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                The Diocesan Shrine and Parish of San Isidro Labrador is a historic church in Pulilan, Bulacan, built during the Spanish colonial period. The church has a simple and well-organized design, with a long main area that leads to the altar. It serves as an important place of worship and a center of community activities in Pulilan. The church is also known for the annual Kneeling Carabao Festival, held every May 14 and 15, where hundreds of carabaos kneel in front of the church as a sign of respect and thanksgiving to San Isidro Labrador, the patron saint of farmers.
+                The Diocesan Shrine and Parish of San Isidro Labrador is a historic church in Pulilan, Bulacan, built
+                during the Spanish colonial period. The church has a simple and well-organized design, with a long main
+                area that leads to the altar. It serves as an important place of worship and a center of community
+                activities in Pulilan. The church is also known for the annual Kneeling Carabao Festival, held every May
+                14 and 15, where hundreds of carabaos kneel in front of the church as a sign of respect and thanksgiving
+                to San Isidro Labrador, the patron saint of farmers.
               </p>
             </div>
 
@@ -236,25 +270,28 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/San Isidro Church.jpg"
-                data-lightbox-tag="ECCLESIASTICAL HERITAGE"
+                data-lightbox-src="assets/San Isidro Church.jpg" data-lightbox-tag="ECCLESIASTICAL HERITAGE"
                 data-lightbox-title="Diocesan Shrine of San Isidro Labrador"
                 data-lightbox-location="Poblacion, Pulilan, Bulacan"
                 data-lightbox-desc="A historic church built during the Spanish colonial period. The church has a simple and well-organized design, with a long main area that leads to the altar. It is known for the annual Kneeling Carabao Festival, held every May 14 and 15."
                 data-lightbox-gallery='["assets/San Isidro Church.jpg","assets/Kneeling Carabao Festival.jpg","assets/Spanish Colonial Era Cemetery.jpg"]'>
-                <img src="assets/San Isidro Church.jpg" alt="Diocesan Shrine and Parish of San Isidro Labrador" class="active-artifact-img" id="artifact-img-church">
+                <img src="assets/San Isidro Church.jpg" alt="Diocesan Shrine and Parish of San Isidro Labrador"
+                  class="active-artifact-img" id="artifact-img-church">
                 <div class="artifact-tag-badge">ECCLESIASTICAL HERITAGE</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-church" data-src="assets/San Isidro Church.jpg" aria-label="Photo 1: Stone Facade & Belfry">
+                <button class="switcher-thumb active" data-target="artifact-img-church"
+                  data-src="assets/San Isidro Church.jpg" aria-label="Photo 1: Stone Facade & Belfry">
                   <img src="assets/San Isidro Church.jpg" alt="Church Facade">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-church" data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 2: Kneeling in front of Church">
+                <button class="switcher-thumb" data-target="artifact-img-church"
+                  data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 2: Kneeling in front of Church">
                   <img src="assets/Kneeling Carabao Festival.jpg" alt="Carabao in front of church">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-church" data-src="assets/Spanish Colonial Era Cemetery.jpg" aria-label="Photo 3: Adjoining Historic Grounds">
+                <button class="switcher-thumb" data-target="artifact-img-church"
+                  data-src="assets/Spanish Colonial Era Cemetery.jpg" aria-label="Photo 3: Adjoining Historic Grounds">
                   <img src="assets/Spanish Colonial Era Cemetery.jpg" alt="Historic grounds">
                 </button>
               </div>
@@ -281,13 +318,25 @@
               <div class="dossier-text-block">
                 <h4>History</h4>
                 <p>
-                  Pulilan was founded by Augustinian friars in 1749 as an agricultural community under the parish of Quingua, now known as Plaridel, and was placed under the patronage of San Isidro Labrador. In 1764, it became an independent parish, with its first church and convent built from bamboo, wood, and nipa. Because people had difficulty crossing the Angat River during typhoons to attend church, a new parish was established in 1794, with Fray Vicente Villamanzo as its first parish priest. In 1826, Fray Juan Rico began building a permanent stone church, which was later damaged by earthquakes in 1863 and 1880 and rebuilt using stronger materials. The Kneeling Carabao tradition also became part of the community’s religious and farming practices. The church was consecrated on February 7, 2013, restored from 2018 to 2019, and officially became a Diocesan Shrine on December 13, 2020.
+                  Pulilan was founded by Augustinian friars in 1749 as an agricultural community under the parish of
+                  Quingua, now known as Plaridel, and was placed under the patronage of San Isidro Labrador. In 1764, it
+                  became an independent parish, with its first church and convent built from bamboo, wood, and nipa.
+                  Because people had difficulty crossing the Angat River during typhoons to attend church, a new parish
+                  was established in 1794, with Fray Vicente Villamanzo as its first parish priest. In 1826, Fray Juan
+                  Rico began building a permanent stone church, which was later damaged by earthquakes in 1863 and 1880
+                  and rebuilt using stronger materials. The Kneeling Carabao tradition also became part of the
+                  community’s religious and farming practices. The church was consecrated on February 7, 2013, restored
+                  from 2018 to 2019, and officially became a Diocesan Shrine on December 13, 2020.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://dspsilpulilan.franzcreations.site/?p=the-shrine" target="_blank" rel="noopener noreferrer">https://dspsilpulilan.franzcreations.site/?p=the-shrine &rarr;</a></li>
-                  <li><a href="https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/" target="_blank" rel="noopener noreferrer">https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/ &rarr;</a></li>
+                  <li><a href="https://dspsilpulilan.franzcreations.site/?p=the-shrine" target="_blank"
+                      rel="noopener noreferrer">https://dspsilpulilan.franzcreations.site/?p=the-shrine &rarr;</a></li>
+                  <li><a href="https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/"
+                      target="_blank"
+                      rel="noopener noreferrer">https://cbcpnews.net/cbcpnews/bulacan-bishop-elevates-pulilan-church-to-diocesan-shrine/
+                      &rarr;</a></li>
                 </ul>
               </div>
 
@@ -327,7 +376,13 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                Pulong Kabyawan is an agricultural and cultural heritage site located in Pulilan, Bulacan. It is a peaceful and green place surrounded by trees, rice fields, farm areas, and spaces where visitors can relax. Aside from its natural surroundings, the place also features a museum, a café that offers coffee, food like rice meals, pasta, pastries, and different farm-related activities that allow visitors to experience a simple version of provincial life. For our group, Pulong Kabyawan is a place where people can enjoy nature while also learning about the culture, history, art, and agricultural traditions of Bulacan.
+                Pulong Kabyawan is an agricultural and cultural heritage site located in Pulilan, Bulacan. It is a
+                peaceful and green place surrounded by trees, rice fields, farm areas, and spaces where visitors can
+                relax. Aside from its natural surroundings, the place also features a museum, a café that offers coffee,
+                food like rice meals, pasta, pastries, and different farm-related activities that allow visitors to
+                experience a simple version of provincial life. For our group, Pulong Kabyawan is a place where people
+                can enjoy nature while also learning about the culture, history, art, and agricultural traditions of
+                Bulacan.
               </p>
             </div>
 
@@ -341,32 +396,36 @@
 
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
-              <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/PulongKabyawan.jpg"
-                data-lightbox-tag="AGRI-HERITAGE"
-                data-lightbox-title="Pulong Kabyawan — Island of Carabao Mills"
+              <div class="artifact-photo-stage" role="button" tabindex="0" data-lightbox-src="assets/PulongKabyawan.jpg"
+                data-lightbox-tag="AGRI-HERITAGE" data-lightbox-title="Pulong Kabyawan — Island of Carabao Mills"
                 data-lightbox-location="Barangay Inaon, Pulilan, Bulacan"
                 data-lightbox-desc="An agricultural and cultural heritage site in Barangay Inaon. A peaceful, green place surrounded by trees, rice fields, and farm areas. Features a museum, café (Kape't Bahay), and farm activities for visitors."
                 data-lightbox-gallery='["assets/PulongKabyawan.jpg","assets/PulongKabyawanCoffeeShop.jpg","assets/PulongKabyawanHouse.jpg","assets/PulongKabyawanKubo.jpg","assets/PulongKabyawanOtherPhotos.jpeg"]'>
-                <img src="assets/PulongKabyawan.jpg" alt="Pulong Kabyawan Natural Farm in Pulilan" class="active-artifact-img" id="artifact-img-kabyawan">
+                <img src="assets/PulongKabyawan.jpg" alt="Pulong Kabyawan Natural Farm in Pulilan"
+                  class="active-artifact-img" id="artifact-img-kabyawan">
                 <div class="artifact-tag-badge">AGRI-HERITAGE</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-kabyawan" data-src="assets/PulongKabyawan.jpg" aria-label="Photo 1: Farm Grounds">
+                <button class="switcher-thumb active" data-target="artifact-img-kabyawan"
+                  data-src="assets/PulongKabyawan.jpg" aria-label="Photo 1: Farm Grounds">
                   <img src="assets/PulongKabyawan.jpg" alt="Farm grounds">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-kabyawan" data-src="assets/PulongKabyawanCoffeeShop.jpg" aria-label="Photo 2: Kape't Bahay">
+                <button class="switcher-thumb" data-target="artifact-img-kabyawan"
+                  data-src="assets/PulongKabyawanCoffeeShop.jpg" aria-label="Photo 2: Kape't Bahay">
                   <img src="assets/PulongKabyawanCoffeeShop.jpg" alt="Kape't Bahay">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-kabyawan" data-src="assets/PulongKabyawanHouse.jpg" aria-label="Photo 3: Heritage House">
+                <button class="switcher-thumb" data-target="artifact-img-kabyawan"
+                  data-src="assets/PulongKabyawanHouse.jpg" aria-label="Photo 3: Heritage House">
                   <img src="assets/PulongKabyawanHouse.jpg" alt="Heritage House">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-kabyawan" data-src="assets/PulongKabyawanKubo.jpg" aria-label="Photo 4: Vernacular Kubo">
+                <button class="switcher-thumb" data-target="artifact-img-kabyawan"
+                  data-src="assets/PulongKabyawanKubo.jpg" aria-label="Photo 4: Vernacular Kubo">
                   <img src="assets/PulongKabyawanKubo.jpg" alt="Vernacular Kubo">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-kabyawan" data-src="assets/PulongKabyawanOtherPhotos.jpeg" aria-label="Photo 5: Bamboo Pavilion">
+                <button class="switcher-thumb" data-target="artifact-img-kabyawan"
+                  data-src="assets/PulongKabyawanOtherPhotos.jpeg" aria-label="Photo 5: Bamboo Pavilion">
                   <img src="assets/PulongKabyawanOtherPhotos.jpeg" alt="Pavilion">
                 </button>
               </div>
@@ -391,24 +450,38 @@
               <div class="dossier-text-block">
                 <h4>History and Background</h4>
                 <p>
-                  Pulong Kabyawan was developed as a community effort to preserve the agricultural land and heritage of Barangay Inaon in Pulilan. According to Cartellino, residents led by Andrew Alto de Guzman worked to protect the area as industrialization began to expand around it. The project eventually became an example of community-based tourism, where local farmers and cultural workers work together to preserve the land while allowing visitors to experience farm life.
+                  Pulong Kabyawan was developed as a community effort to preserve the agricultural land and heritage of
+                  Barangay Inaon in Pulilan. According to Cartellino, residents led by Andrew Alto de Guzman worked to
+                  protect the area as industrialization began to expand around it. The project eventually became an
+                  example of community-based tourism, where local farmers and cultural workers work together to preserve
+                  the land while allowing visitors to experience farm life.
                 </p>
                 <p>
-                  The name “Pulong Kabyawan” is associated with the agricultural character of the area and is translated in the Cartellino article as “Island of Carabao Mills.” The place continues to function as a farm, while also welcoming visitors who want to experience its cultural and natural environment.
+                  The name “Pulong Kabyawan” is associated with the agricultural character of the area and is translated
+                  in the Cartellino article as “Island of Carabao Mills.” The place continues to function as a farm,
+                  while also welcoming visitors who want to experience its cultural and natural environment.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural and Historical Significance</h4>
                 <p>
-                  Pulong Kabyawan is significant because it helps preserve the agricultural heritage of Pulilan while connecting it with art and culture. Visitors can see the relationship between farming, traditional ways of life, and local artistic expression.
+                  Pulong Kabyawan is significant because it helps preserve the agricultural heritage of Pulilan while
+                  connecting it with art and culture. Visitors can see the relationship between farming, traditional
+                  ways of life, and local artistic expression.
                 </p>
                 <p>
-                  One of its important features is Museo Pulong Kabyawan, which showcases artworks by artists from Bulacan and Pampanga and presents the history of the farm and the lives of people connected to it. The site also has traditional farm structures and spaces that reflect provincial life.
+                  One of its important features is Museo Pulong Kabyawan, which showcases artworks by artists from
+                  Bulacan and Pampanga and presents the history of the farm and the lives of people connected to it. The
+                  site also has traditional farm structures and spaces that reflect provincial life.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://cartellino.com/features/2023/01/24/How-farmers-and-cultural-workers-teamed-up-to-preserve-Bulacans-agricultural-built-and-artistic-heritage" target="_blank" rel="noopener noreferrer">Cartellino: How farmers and cultural workers teamed up to preserve heritage &rarr;</a></li>
-                  <li><a href="https://ninjammoves.com/travel/philippines/pulong-kabyawan-bulacan/" target="_blank" rel="noopener noreferrer">NinjaMoves: Pulong Kabyawan Bulacan Travel Guide &rarr;</a></li>
+                  <li><a
+                      href="https://cartellino.com/features/2023/01/24/How-farmers-and-cultural-workers-teamed-up-to-preserve-Bulacans-agricultural-built-and-artistic-heritage"
+                      target="_blank" rel="noopener noreferrer">Cartellino: How farmers and cultural workers teamed up
+                      to preserve heritage &rarr;</a></li>
+                  <li><a href="https://ninjammoves.com/travel/philippines/pulong-kabyawan-bulacan/" target="_blank"
+                      rel="noopener noreferrer">NinjaMoves: Pulong Kabyawan Bulacan Travel Guide &rarr;</a></li>
                 </ul>
               </div>
 
@@ -447,7 +520,12 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                The Spanish Colonial Era Cemetery, also known as Campo Santo, is a historic cemetery located beside the San Isidro Labrador Church in Pulilan, Bulacan. Dating back to the late 18th century, the cemetery is one of the few remaining church-compound cemeteries in Bulacan. Its old stone structures, adobe walls, graves, and distinctive entrance give the place a strong historical character. For us, it is interesting because even though the cemetery is very old, its structures are still visually beautiful and allow visitors to see a part of Pulilan's history.
+                The Spanish Colonial Era Cemetery, also known as Campo Santo, is a historic cemetery located beside the
+                San Isidro Labrador Church in Pulilan, Bulacan. Dating back to the late 18th century, the cemetery is
+                one of the few remaining church-compound cemeteries in Bulacan. Its old stone structures, adobe walls,
+                graves, and distinctive entrance give the place a strong historical character. For us, it is interesting
+                because even though the cemetery is very old, its structures are still visually beautiful and allow
+                visitors to see a part of Pulilan's history.
               </p>
             </div>
 
@@ -462,25 +540,30 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Spanish Colonial Era Cemetery.jpg"
-                data-lightbox-tag="FUNERARY HERITAGE"
+                data-lightbox-src="assets/Spanish Colonial Era Cemetery.jpg" data-lightbox-tag="FUNERARY HERITAGE"
                 data-lightbox-title="Spanish Colonial Era Cemetery (Campo Santo)"
                 data-lightbox-location="Beside San Isidro Labrador Church, Poblacion, Pulilan"
                 data-lightbox-desc="A historic cemetery dating back to the late 18th century, one of the few remaining church-compound cemeteries in Bulacan. Its old stone structures, adobe walls, graves, and distinctive three-level arched entrance give the place a strong historical character."
-                data-lightbox-gallery='["assets/Spanish Colonial Era Cemetery.jpg"]'>
-                <img src="assets/Spanish Colonial Era Cemetery.jpg" alt="Spanish Colonial Era Cemetery (Campo Santo) in Pulilan" class="active-artifact-img" id="artifact-img-campo">
+                data-lightbox-gallery='["assets/Spanish Colonial Era Cemetery.jpg","assets/Spanish Colonial Era Cemetery Other.jpg","assets/Spanish Colonial Era Cemetery Other 1.jpg"]'>
+                <img src="assets/Spanish Colonial Era Cemetery.jpg"
+                  alt="Spanish Colonial Era Cemetery (Campo Santo) in Pulilan" class="active-artifact-img"
+                  id="artifact-img-campo">
                 <div class="artifact-tag-badge">FUNERARY HERITAGE</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-campo" data-src="assets/Spanish Colonial Era Cemetery.jpg" aria-label="Photo 1: Three-Level Arched Entrance">
+                <button class="switcher-thumb active" data-target="artifact-img-campo"
+                  data-src="assets/Spanish Colonial Era Cemetery.jpg" aria-label="Photo 1: Three-Level Arched Entrance">
                   <img src="assets/Spanish Colonial Era Cemetery.jpg" alt="Cemetery entrance">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-campo" data-src="assets/Spanish Colonial Era Cemetery Other.jpg" aria-label="Photo 2: Adobe Walls">
+                <button class="switcher-thumb" data-target="artifact-img-campo"
+                  data-src="assets/Spanish Colonial Era Cemetery Other.jpg" aria-label="Photo 2: Adobe Walls">
                   <img src="assets/Spanish Colonial Era Cemetery Other.jpg" alt="Adobe walls">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-campo" data-src="assets/Spanish Colonial Era Cemetery Other 1.jpg" aria-label="Photo 3: Brick Pediment Detail">
+                <button class="switcher-thumb" data-target="artifact-img-campo"
+                  data-src="assets/Spanish Colonial Era Cemetery Other 1.jpg"
+                  aria-label="Photo 3: Brick Pediment Detail">
                   <img src="assets/Spanish Colonial Era Cemetery Other 1.jpg" alt="Pediment detail">
                 </button>
               </div>
@@ -505,26 +588,37 @@
               <div class="dossier-text-block">
                 <h4>History and Background</h4>
                 <p>
-                  The cemetery dates back to the late 18th century, during the Spanish colonial period in the Philippines. It was established beside the church, following the traditional arrangement of having burial grounds within or near a church compound.
+                  The cemetery dates back to the late 18th century, during the Spanish colonial period in the
+                  Philippines. It was established beside the church, following the traditional arrangement of having
+                  burial grounds within or near a church compound.
                 </p>
                 <p>
-                  The cemetery is surrounded by adobe walls, while its entrance is a three-level stone-and-brick structure with an arched pediment. These structures show the architectural style and construction materials associated with older Spanish-era religious sites.
+                  The cemetery is surrounded by adobe walls, while its entrance is a three-level stone-and-brick
+                  structure with an arched pediment. These structures show the architectural style and construction
+                  materials associated with older Spanish-era religious sites.
                 </p>
                 <p>
-                  The cemetery has remained an important historical feature of Pulilan and continues to stand beside the San Isidro Labrador Church, connecting the present community with the town's colonial-era past.
+                  The cemetery has remained an important historical feature of Pulilan and continues to stand beside the
+                  San Isidro Labrador Church, connecting the present community with the town's colonial-era past.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural and Historical Significance</h4>
                 <p>
-                  The cemetery provides a physical connection to Pulilan's history during the Spanish colonial period. Its location beside the church reflects how religious life and burial traditions were closely connected in earlier communities.
+                  The cemetery provides a physical connection to Pulilan's history during the Spanish colonial period.
+                  Its location beside the church reflects how religious life and burial traditions were closely
+                  connected in earlier communities.
                 </p>
                 <p>
-                  From an Art Appreciation perspective, the cemetery is also valuable because of its architecture and visual details. The old adobe walls, stone-and-brick entrance, arched design, and historic graves demonstrate how structures can become part of a community's cultural heritage.
+                  From an Art Appreciation perspective, the cemetery is also valuable because of its architecture and
+                  visual details. The old adobe walls, stone-and-brick entrance, arched design, and historic graves
+                  demonstrate how structures can become part of a community's cultural heritage.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Pulilan-Cemetery/40" target="_blank" rel="noopener noreferrer">https://celebrate.pulilan.gov.ph/tourism/Pulilan-Cemetery/40 &rarr;</a></li>
+                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Pulilan-Cemetery/40" target="_blank"
+                      rel="noopener noreferrer">https://celebrate.pulilan.gov.ph/tourism/Pulilan-Cemetery/40 &rarr;</a>
+                  </li>
                 </ul>
               </div>
 
@@ -563,7 +657,9 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                A luxury 26-hectare private equestrian club, known for its magnificent polo fields and green landscapes. It features open grounds for training, practice chukkers, tournaments, and private equestrian events, and offers riding and polo lessons for beginners.
+                A luxury 26-hectare private equestrian club, known for its magnificent polo fields and green landscapes.
+                It features open grounds for training, practice chukkers, tournaments, and private equestrian events,
+                and offers riding and polo lessons for beginners.
               </p>
             </div>
 
@@ -578,25 +674,27 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/North Polo Club.jpg"
-                data-lightbox-tag="EQUESTRIAN HERITAGE"
-                data-lightbox-title="The North Polo Club (NPC)"
-                data-lightbox-location="Big Ben Farm, Pulilan, Bulacan"
+                data-lightbox-src="assets/North Polo Club.jpg" data-lightbox-tag="EQUESTRIAN HERITAGE"
+                data-lightbox-title="The North Polo Club (NPC)" data-lightbox-location="Big Ben Farm, Pulilan, Bulacan"
                 data-lightbox-desc="A premier equestrian club established in 2014 by Bigboy Eduardo within Big Ben Farm, a 26-hectare estate in Pulilan. One of the premier polo clubs in the Philippines, attracting both local and international equestrian enthusiasts."
-                data-lightbox-gallery='["assets/North Polo Club.jpg"]'>
-                <img src="assets/North Polo Club.jpg" alt="The North Polo Club in Pulilan, Bulacan" class="active-artifact-img" id="artifact-img-polo">
+                data-lightbox-gallery='["assets/North Polo Club.jpg","assets/North Polo Club Other Photo.jpg","assets/North Polo Club Other Photo 1.jpg"]'>
+                <img src="assets/North Polo Club.jpg" alt="The North Polo Club in Pulilan, Bulacan"
+                  class="active-artifact-img" id="artifact-img-polo">
                 <div class="artifact-tag-badge">EQUESTRIAN HERITAGE</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-polo" data-src="assets/North Polo Club.jpg" aria-label="Photo 1: Polo Field">
+                <button class="switcher-thumb active" data-target="artifact-img-polo"
+                  data-src="assets/North Polo Club.jpg" aria-label="Photo 1: Polo Field">
                   <img src="assets/North Polo Club.jpg" alt="Polo field">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-polo" data-src="assets/North Polo Club Other Photo.jpg" aria-label="Photo 2: Stables and Grounds">
+                <button class="switcher-thumb" data-target="artifact-img-polo"
+                  data-src="assets/North Polo Club Other Photo.jpg" aria-label="Photo 2: Stables and Grounds">
                   <img src="assets/North Polo Club Other Photo.jpg" alt="Stables">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-polo" data-src="assets/North Polo Club Other Photo 1.jpg" aria-label="Photo 3: Viewing Grounds">
+                <button class="switcher-thumb" data-target="artifact-img-polo"
+                  data-src="assets/North Polo Club Other Photo 1.jpg" aria-label="Photo 3: Viewing Grounds">
                   <img src="assets/North Polo Club Other Photo 1.jpg" alt="Viewing grounds">
                 </button>
               </div>
@@ -621,21 +719,32 @@
               <div class="dossier-text-block">
                 <h4>History and Background</h4>
                 <p>
-                  The North Polo Club (NPC) was established in 2014 by businessman, art collector, and polo player, Bigboy Eduardo. It was established to promote polo sport in the Philippines. Eduardo developed the agricultural lands in Pulilan, into an outstanding sports destination including specialized polo fields, riding arenas, and stables that are able to accommodate dozens of thoroughbred horses.
+                  The North Polo Club (NPC) was established in 2014 by businessman, art collector, and polo player,
+                  Bigboy Eduardo. It was established to promote polo sport in the Philippines. Eduardo developed the
+                  agricultural lands in Pulilan, into an outstanding sports destination including specialized polo
+                  fields, riding arenas, and stables that are able to accommodate dozens of thoroughbred horses.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural and Historical Significance</h4>
                 <p>
-                  NPC placed Pulilan town into international equestrian map, changing its agricultural reputation into that of sports tourism destination. It changed the image from being a farming community into a center for sports tourism and high society. This place, which used to be farming land before it became a modernized place, has been given an enhancement through the inclusion of international standard polo fields and horse breeding as a result of the rich history of horses in the area.
+                  NPC placed Pulilan town into international equestrian map, changing its agricultural reputation into
+                  that of sports tourism destination. It changed the image from being a farming community into a center
+                  for sports tourism and high society. This place, which used to be farming land before it became a
+                  modernized place, has been given an enhancement through the inclusion of international standard polo
+                  fields and horse breeding as a result of the rich history of horses in the area.
                 </p>
                 <p>
-                  The place hosts national and international polo tournaments, encouraging interest of locals into equestrian discipline, breeding and field sports.
+                  The place hosts national and international polo tournaments, encouraging interest of locals into
+                  equestrian discipline, breeding and field sports.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://www.facebook.com/northpoloclub/" target="_blank" rel="noopener noreferrer">Official Facebook Page: North Polo Club | Pulilan &rarr;</a></li>
-                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/North-Polo-Club/35" target="_blank" rel="noopener noreferrer">https://celebrate.pulilan.gov.ph/tourism/North-Polo-Club/35 &rarr;</a></li>
+                  <li><a href="https://www.facebook.com/northpoloclub/" target="_blank"
+                      rel="noopener noreferrer">Official Facebook Page: North Polo Club | Pulilan &rarr;</a></li>
+                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/North-Polo-Club/35" target="_blank"
+                      rel="noopener noreferrer">https://celebrate.pulilan.gov.ph/tourism/North-Polo-Club/35 &rarr;</a>
+                  </li>
                 </ul>
               </div>
 
@@ -674,7 +783,11 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                Casa San Francisco is a preserved heritage house in Pulilan, Bulacan. Also known as the Laxamana House, it is an old bahay na bato that allows visitors to see traditional Filipino architecture and the lifestyle of families from an earlier period. The house features old wooden elements, furniture, paintings, tables, stairs, and a balcony that have been carefully preserved. Today, it also serves as a space for cultural activities, exhibitions, and private events.
+                Casa San Francisco is a preserved heritage house in Pulilan, Bulacan. Also known as the Laxamana House,
+                it is an old bahay na bato that allows visitors to see traditional Filipino architecture and the
+                lifestyle of families from an earlier period. The house features old wooden elements, furniture,
+                paintings, tables, stairs, and a balcony that have been carefully preserved. Today, it also serves as a
+                space for cultural activities, exhibitions, and private events.
               </p>
             </div>
 
@@ -689,25 +802,28 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Casa San Francisco.jpg"
-                data-lightbox-tag="RESIDENTIAL HERITAGE"
+                data-lightbox-src="assets/Casa San Francisco.jpg" data-lightbox-tag="RESIDENTIAL HERITAGE"
                 data-lightbox-title="Casa San Francisco (Laxamana Heritage House)"
                 data-lightbox-location="Poblacion, Pulilan, Bulacan"
                 data-lightbox-desc="A preserved heritage house built in 1929, also known as the Laxamana House. An old bahay na bato that allows visitors to see traditional Filipino architecture. The house features old wooden elements, furniture, paintings, tables, stairs, and a balcony that have been carefully preserved."
-                data-lightbox-gallery='["assets/Casa San Francisco.jpg"]'>
-                <img src="assets/Casa San Francisco.jpg" alt="Casa San Francisco (Laxamana Heritage House) in Pulilan" class="active-artifact-img" id="artifact-img-casa">
+                data-lightbox-gallery='["assets/Casa San Francisco.jpg","assets/Casa San Francisco Interior 1.jpg","assets/Casa San Francisco Interior 2.jpg"]'>
+                <img src="assets/Casa San Francisco.jpg" alt="Casa San Francisco (Laxamana Heritage House) in Pulilan"
+                  class="active-artifact-img" id="artifact-img-casa">
                 <div class="artifact-tag-badge">RESIDENTIAL HERITAGE</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-casa" data-src="assets/Casa San Francisco.jpg" aria-label="Photo 1: Exterior Facade">
+                <button class="switcher-thumb active" data-target="artifact-img-casa"
+                  data-src="assets/Casa San Francisco.jpg" aria-label="Photo 1: Exterior Facade">
                   <img src="assets/Casa San Francisco.jpg" alt="Exterior facade">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-casa" data-src="assets/Casa San Francisco Interior 1.jpg" aria-label="Photo 2: Living Salon Interior">
+                <button class="switcher-thumb" data-target="artifact-img-casa"
+                  data-src="assets/Casa San Francisco Interior 1.jpg" aria-label="Photo 2: Living Salon Interior">
                   <img src="assets/Casa San Francisco Interior 1.jpg" alt="Salon interior">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-casa" data-src="assets/Casa San Francisco Interior 2.jpg" aria-label="Photo 3: Heirloom Furnishings">
+                <button class="switcher-thumb" data-target="artifact-img-casa"
+                  data-src="assets/Casa San Francisco Interior 2.jpg" aria-label="Photo 3: Heirloom Furnishings">
                   <img src="assets/Casa San Francisco Interior 2.jpg" alt="Heirloom furnishings">
                 </button>
               </div>
@@ -732,26 +848,42 @@
               <div class="dossier-text-block">
                 <h4>History and Background</h4>
                 <p>
-                  Casa San Francisco was built in 1929 and is one of the heritage houses that represents Pulilan's architectural history. The house became part of efforts to preserve the town's heritage and demonstrate how old structures can continue to have a purpose in the present. According to the Inquirer, Pulilan has worked with local heritage advocates, residents, the church, and the local government to protect and restore historic places in the municipality.
+                  Casa San Francisco was built in 1929 and is one of the heritage houses that represents Pulilan's
+                  architectural history. The house became part of efforts to preserve the town's heritage and
+                  demonstrate how old structures can continue to have a purpose in the present. According to the
+                  Inquirer, Pulilan has worked with local heritage advocates, residents, the church, and the local
+                  government to protect and restore historic places in the municipality.
                 </p>
                 <p>
-                  Rather than completely changing the character of the house, the restoration focused on preserving its original appearance and important architectural elements. This allows visitors to experience the traditional design and atmosphere of an old Filipino heritage house.
+                  Rather than completely changing the character of the house, the restoration focused on preserving its
+                  original appearance and important architectural elements. This allows visitors to experience the
+                  traditional design and atmosphere of an old Filipino heritage house.
                 </p>
                 <p>
-                  Casa San Francisco has also been used as a venue for cultural and artistic activities. It has hosted exhibitions and events connected to Pulilan's Mandalá Art Festival, allowing the heritage house itself to become part of the community's art and cultural activities.
+                  Casa San Francisco has also been used as a venue for cultural and artistic activities. It has hosted
+                  exhibitions and events connected to Pulilan's Mandalá Art Festival, allowing the heritage house itself
+                  to become part of the community's art and cultural activities.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural and Historical Significance</h4>
                 <p>
-                  Casa San Francisco is culturally significant because it preserves a physical representation of Pulilan's past and Filipino heritage architecture. Its old wooden structures, furniture, paintings, staircase, tables, and balcony allow visitors to see how homes were designed and furnished during an earlier period.
+                  Casa San Francisco is culturally significant because it preserves a physical representation of
+                  Pulilan's past and Filipino heritage architecture. Its old wooden structures, furniture, paintings,
+                  staircase, tables, and balcony allow visitors to see how homes were designed and furnished during an
+                  earlier period.
                 </p>
                 <p>
-                  From an Art Appreciation perspective, the house shows that art can also be found in architecture and everyday objects. The design of the staircase, wooden details, furniture, interior, and overall structure contributes to the artistic character of the house.
+                  From an Art Appreciation perspective, the house shows that art can also be found in architecture and
+                  everyday objects. The design of the staircase, wooden details, furniture, interior, and overall
+                  structure contributes to the artistic character of the house.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://lifestyle.inquirer.net/284360/pulilan-bulacan-leads-way-heritage-based-sustainable-development/" target="_blank" rel="noopener noreferrer">Inquirer: Pulilan leads the way in heritage-based sustainable development &rarr;</a></li>
+                  <li><a
+                      href="https://lifestyle.inquirer.net/284360/pulilan-bulacan-leads-way-heritage-based-sustainable-development/"
+                      target="_blank" rel="noopener noreferrer">Inquirer: Pulilan leads the way in heritage-based
+                      sustainable development &rarr;</a></li>
                 </ul>
               </div>
 
@@ -790,7 +922,15 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                The Kneeling Carabao Festival is a cultural and religious celebration every 14th of May in Pulilan, Bulacan. It is one of the ways to honor San Isidro Labrador, the patron saint of farmers, and serves as a thanksgiving celebration for a bountiful harvest and blessings while recognizing the hard work and contributions of local farmers. There’s a grand parade of decorated carabaos, floats, marching bands, and street dancing that attracts many tourists who come to witness this unique tradition. Also a showcase of each barangay of their decorated kubo with vegetables and other crops from their harvest, that represent the agricultural livelihood and abundance of the community. Those carabaos are trained by their owners to kneel in front of the church of San Isidro Labrador Parish Church as a sign of thanksgiving and respect for the patron saint.
+                The Kneeling Carabao Festival is a cultural and religious celebration every 14th of May in Pulilan,
+                Bulacan. It is one of the ways to honor San Isidro Labrador, the patron saint of farmers, and serves as
+                a thanksgiving celebration for a bountiful harvest and blessings while recognizing the hard work and
+                contributions of local farmers. There’s a grand parade of decorated carabaos, floats, marching bands,
+                and street dancing that attracts many tourists who come to witness this unique tradition. Also a
+                showcase of each barangay of their decorated kubo with vegetables and other crops from their harvest,
+                that represent the agricultural livelihood and abundance of the community. Those carabaos are trained by
+                their owners to kneel in front of the church of San Isidro Labrador Parish Church as a sign of
+                thanksgiving and respect for the patron saint.
               </p>
             </div>
 
@@ -805,25 +945,29 @@
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
               <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Kneeling Carabao Festival.jpg"
-                data-lightbox-tag="LIVING TRADITION"
+                data-lightbox-src="assets/Kneeling Carabao Festival.jpg" data-lightbox-tag="LIVING TRADITION"
                 data-lightbox-title="Kneeling Carabao Festival"
                 data-lightbox-location="San Isidro Labrador Church, Poblacion, Pulilan"
                 data-lightbox-desc="Held every May 14th and 15th, this annual fiesta honors San Isidro Labrador. Hundreds of carabaos are brought to kneel before the church as a sign of devotion and thanksgiving. The festival features decorated carabaos, kubo exhibits, and a procession."
-                data-lightbox-gallery='["assets/Kneeling Carabao Festival.jpg"]'>
-                <img src="assets/Kneeling Carabao Festival.jpg" alt="Kneeling Carabao Festival in Pulilan, Bulacan" class="active-artifact-img" id="artifact-img-festival">
+                data-lightbox-gallery='["assets/Kneeling Carabao Festival.jpg","assets/Kneeling Carabao Festival Other Photos 1.jpg","assets/San Isidro Church.jpg"]'>
+                <img src="assets/Kneeling Carabao Festival.jpg" alt="Kneeling Carabao Festival in Pulilan, Bulacan"
+                  class="active-artifact-img" id="artifact-img-festival">
                 <div class="artifact-tag-badge">LIVING TRADITION</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-festival" data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 1: Kneeling Carabao Procession">
+                <button class="switcher-thumb active" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival.jpg" aria-label="Photo 1: Kneeling Carabao Procession">
                   <img src="assets/Kneeling Carabao Festival.jpg" alt="Festival Procession">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-festival" data-src="assets/Kneeling Carabao Festival Other Photos 1.jpg" aria-label="Photo 2: Parade and Crowds">
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/Kneeling Carabao Festival Other Photos 1.jpg"
+                  aria-label="Photo 2: Parade and Crowds">
                   <img src="assets/Kneeling Carabao Festival Other Photos 1.jpg" alt="Parade and crowds">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-festival" data-src="assets/San Isidro Church.jpg" aria-label="Photo 3: Parish Church Square">
+                <button class="switcher-thumb" data-target="artifact-img-festival"
+                  data-src="assets/San Isidro Church.jpg" aria-label="Photo 3: Parish Church Square">
                   <img src="assets/San Isidro Church.jpg" alt="Church square">
                 </button>
               </div>
@@ -848,23 +992,41 @@
               <div class="dossier-text-block">
                 <h4>History</h4>
                 <p>
-                  The festival is rooted in the devotion to San Isidro Labrador, a peasant field worker from Spain who was known for his deep faith and dedication to farming. According to Catholic tradition, angels helped him plow the fields while he prayed, symbolizing divine blessings for farmers. When Spanish missionaries established settlements in Pulilan, then it was dedicated to San Isidro. Pulilan was originally a barrio known as San Isidro or Buenavista under Quingua, now Plaridel, and was established under the advocation of San Isidro in 1749. The San Isidro Labrador Parish Church, built in 1829, later became the center of the tradition. Carabaos is well known as one of the important animals when it comes to farming, it became part of the tradition. The carabao trained to kneel in front of patrons as a symbol of thanksgiving, humility, and respect.
+                  The festival is rooted in the devotion to San Isidro Labrador, a peasant field worker from Spain who
+                  was known for his deep faith and dedication to farming. According to Catholic tradition, angels helped
+                  him plow the fields while he prayed, symbolizing divine blessings for farmers. When Spanish
+                  missionaries established settlements in Pulilan, then it was dedicated to San Isidro. Pulilan was
+                  originally a barrio known as San Isidro or Buenavista under Quingua, now Plaridel, and was established
+                  under the advocation of San Isidro in 1749. The San Isidro Labrador Parish Church, built in 1829,
+                  later became the center of the tradition. Carabaos is well known as one of the important animals when
+                  it comes to farming, it became part of the tradition. The carabao trained to kneel in front of patrons
+                  as a symbol of thanksgiving, humility, and respect.
                 </p>
 
                 <h4 style="margin-top:20px;">How It Is Celebrated</h4>
                 <p>
-                  This begins with a grand parade of decorated carabaos, floats, marching bands, and street dancing. Carabaos are decorated with flowers, painted designs, and colorful costumes. As they pass in front of the San Isidro Labrador Parish Church, the owners signal them to kneel in front of the church while people surround them, chanting “Viva San Isidro!” and shouting “Luhod!”
+                  This begins with a grand parade of decorated carabaos, floats, marching bands, and street dancing.
+                  Carabaos are decorated with flowers, painted designs, and colorful costumes. As they pass in front of
+                  the San Isidro Labrador Parish Church, the owners signal them to kneel in front of the church while
+                  people surround them, chanting “Viva San Isidro!” and shouting “Luhod!”
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural Significance</h4>
                 <p>
-                  The Kneeling Carabao Festival holds cultural and religious significance as a collective expression of gratitude to San Isidro Labrador for good health, protection of livestock, and fruitful agricultural harvests. It symbolizes the hard work, humility, and dedication of local farmers. Through this, it helps preserve Pulilan’s agricultural traditions and cultural heritage while bringing the community together.
+                  The Kneeling Carabao Festival holds cultural and religious significance as a collective expression of
+                  gratitude to San Isidro Labrador for good health, protection of livestock, and fruitful agricultural
+                  harvests. It symbolizes the hard work, humility, and dedication of local farmers. Through this, it
+                  helps preserve Pulilan’s agricultural traditions and cultural heritage while bringing the community
+                  together.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://tempo.mb.com.ph/2026/05/13/kneeling-carabaos-to-wow-pulilan-fiesta-crowds" target="_blank" rel="noopener noreferrer">Tempo / Manila Bulletin: Kneeling carabaos to wow Pulilan fiesta crowds &rarr;</a></li>
-                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Kneeling-Carabao-Festival-/8" target="_blank" rel="noopener noreferrer">Celebrate Pulilan: Kneeling Carabao Festival &rarr;</a></li>
+                  <li><a href="https://tempo.mb.com.ph/2026/05/13/kneeling-carabaos-to-wow-pulilan-fiesta-crowds"
+                      target="_blank" rel="noopener noreferrer">Tempo / Manila Bulletin: Kneeling carabaos to wow
+                      Pulilan fiesta crowds &rarr;</a></li>
+                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Kneeling-Carabao-Festival-/8" target="_blank"
+                      rel="noopener noreferrer">Celebrate Pulilan: Kneeling Carabao Festival &rarr;</a></li>
                 </ul>
               </div>
 
@@ -903,10 +1065,17 @@
             <div class="content-block">
               <h3 class="narrative-heading">Short Description</h3>
               <p class="lead-narrative">
-                A unique Filipino glutinous rice cake (kakanin), rich in flavor, prepared in thick coconut cream and served in a flattened shape on a banana leaf.
+                A unique Filipino glutinous rice cake (kakanin), rich in flavor, prepared in thick coconut cream and
+                served in a flattened shape on a banana leaf.
               </p>
               <p>
-                The origins of Suman Bulagta are connected with the initial agricultural period in Bulacan. Rich harvests of rice and coconut helped local housewives to develop a way to steam sticky rice in loose wrappers of banana leaves, so that when opened, the delicacy lays flatly. It is known for its tenderness, pale yellow color, and flat presentation once it is unpacked from the leaf packaging. The word “bulagta” means “lying flat on one’s back” or “knocked out flat” in Tagalog, which is directly reflected in the shape of the cake. One distinctive feature of this sticky rice treat is its unique chewy texture that differs from the conventional cylindrical rice cake treats.
+                The origins of Suman Bulagta are connected with the initial agricultural period in Bulacan. Rich
+                harvests of rice and coconut helped local housewives to develop a way to steam sticky rice in loose
+                wrappers of banana leaves, so that when opened, the delicacy lays flatly. It is known for its
+                tenderness, pale yellow color, and flat presentation once it is unpacked from the leaf packaging. The
+                word “bulagta” means “lying flat on one’s back” or “knocked out flat” in Tagalog, which is directly
+                reflected in the shape of the cake. One distinctive feature of this sticky rice treat is its unique
+                chewy texture that differs from the conventional cylindrical rice cake treats.
               </p>
             </div>
 
@@ -920,23 +1089,24 @@
 
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
-              <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Sumang Bulagta.jpg"
-                data-lightbox-tag="HEIRLOOM KAKANIN"
-                data-lightbox-title="Sumang Bulagta"
+              <div class="artifact-photo-stage" role="button" tabindex="0" data-lightbox-src="assets/Sumang Bulagta.jpg"
+                data-lightbox-tag="HEIRLOOM KAKANIN" data-lightbox-title="Sumang Bulagta"
                 data-lightbox-location="Pulilan, Bulacan"
                 data-lightbox-desc="A traditional kakanin (rice cake) unique to Pulilan, made from malagkit (glutinous rice) with lihiya (lye water), wrapped loosely in banana leaves allowing it to lie flat — hence 'bulagta' (lying flat). It is steamed or grilled and served with sweet coconut toppings."
-                data-lightbox-gallery='["assets/Sumang Bulagta.jpg"]'>
-                <img src="assets/Sumang Bulagta.jpg" alt="Sumang Bulagta traditional kakanin from Pulilan" class="active-artifact-img" id="artifact-img-bulagta">
+                data-lightbox-gallery='["assets/Sumang Bulagta.jpg","assets/Sumang Bulagta Other Photo.jpg"]'>
+                <img src="assets/Sumang Bulagta.jpg" alt="Sumang Bulagta traditional kakanin from Pulilan"
+                  class="active-artifact-img" id="artifact-img-bulagta">
                 <div class="artifact-tag-badge">HEIRLOOM KAKANIN</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-bulagta" data-src="assets/Sumang Bulagta.jpg" aria-label="Photo 1: Unwrapped Flat Suman">
+                <button class="switcher-thumb active" data-target="artifact-img-bulagta"
+                  data-src="assets/Sumang Bulagta.jpg" aria-label="Photo 1: Unwrapped Flat Suman">
                   <img src="assets/Sumang Bulagta.jpg" alt="Sumang Bulagta">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-bulagta" data-src="assets/Sumang Bulagta Other Photo.jpg" aria-label="Photo 2: Wrapped Banana Leaf">
+                <button class="switcher-thumb" data-target="artifact-img-bulagta"
+                  data-src="assets/Sumang Bulagta Other Photo.jpg" aria-label="Photo 2: Wrapped Banana Leaf">
                   <img src="assets/Sumang Bulagta Other Photo.jpg" alt="Wrapped Suman">
                 </button>
               </div>
@@ -961,38 +1131,61 @@
               <div class="dossier-text-block">
                 <h4>Main Ingredients</h4>
                 <p>
-                  Glutinous rice (malagkit) forms the sticky main ingredient. Lye water (lihiya) is added in small amounts to make the rice chewy and give it a nice golden shade. Water and salt serve to hydrate the rice and prepare it for cooking. The rice mixture is covered in banana leaves and is served with grated coconut, sugar, or coconut syrup (latik).
+                  Glutinous rice (malagkit) forms the sticky main ingredient. Lye water (lihiya) is added in small
+                  amounts to make the rice chewy and give it a nice golden shade. Water and salt serve to hydrate the
+                  rice and prepare it for cooking. The rice mixture is covered in banana leaves and is served with
+                  grated coconut, sugar, or coconut syrup (latik).
                 </p>
 
                 <h4 style="margin-top:20px;">How/Where It Is Commonly Prepared or Served</h4>
                 <p>
-                  Sticky rice is soaked, mixed with lye water, wrapped in banana leaves, and then boiled in large kettles until cooked. Once it is ready, the leaf wrapper is unpacked and laid out flat. The soft rice cake spreads out, and that's how it got its name "bulagta" meaning lying flat. It is a warm breakfast or meryenda treat, available for purchase at the Pulilan local markets daily.
+                  Sticky rice is soaked, mixed with lye water, wrapped in banana leaves, and then boiled in large
+                  kettles until cooked. Once it is ready, the leaf wrapper is unpacked and laid out flat. The soft rice
+                  cake spreads out, and that's how it got its name "bulagta" meaning lying flat. It is a warm breakfast
+                  or meryenda treat, available for purchase at the Pulilan local markets daily.
                 </p>
 
                 <h4 style="margin-top:20px;">Connection to Pulilan</h4>
                 <p>
-                  Being an agriculture-based municipality, it was only natural that people of Pulilan would have sticky rice delicacies at home. Families developed a unique recipe of loose wrapping to differentiate it from the tightly bound suman of neighboring towns. Ample harvests allowed perfecting the recipes that were transferred to next generations.
+                  Being an agriculture-based municipality, it was only natural that people of Pulilan would have sticky
+                  rice delicacies at home. Families developed a unique recipe of loose wrapping to differentiate it from
+                  the tightly bound suman of neighboring towns. Ample harvests allowed perfecting the recipes that were
+                  transferred to next generations.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural/Local Significance</h4>
                 <p>
-                  In Bulacan food plays a major role in social and religious celebrations. Suman Bulagta is a sign of hospitality and community gathering in Pulilan. The dish is an important culinary part of town fiestas, church festivities and especially well-known Kneeling Carabao Festival in May, where local families prepare it to share with guests.
+                  In Bulacan food plays a major role in social and religious celebrations. Suman Bulagta is a sign of
+                  hospitality and community gathering in Pulilan. The dish is an important culinary part of town
+                  fiestas, church festivities and especially well-known Kneeling Carabao Festival in May, where local
+                  families prepare it to share with guests.
                 </p>
                 <p>
-                  This sticky rice treat is associated with hospitality and warmth of Bulakenyo homes. Suman Bulagta is an indispensable part of any gathering in the community, whether it is a celebration, holiday, or a reunion of the families. Suman Bulagta is always served at the Kneeling Carabao Festival every May.
+                  This sticky rice treat is associated with hospitality and warmth of Bulakenyo homes. Suman Bulagta is
+                  an indispensable part of any gathering in the community, whether it is a celebration, holiday, or a
+                  reunion of the families. Suman Bulagta is always served at the Kneeling Carabao Festival every May.
                 </p>
 
                 <h4 style="margin-top:20px;">Interesting Facts</h4>
                 <p>
-                  Unlike other suman types (for example Suman sa Lihiya or Suman Latik), which are tightly tied in strings, Suman Bulagta is folded in a way which lets it easily open as a rectangle after cooking. It is traditionally served warm with fresh grated mature coconut meat and brown sugar or with latik (caramelized coconut cream) and tsokolate (native chocolate).
+                  Unlike other suman types (for example Suman sa Lihiya or Suman Latik), which are tightly tied in
+                  strings, Suman Bulagta is folded in a way which lets it easily open as a rectangle after cooking. It
+                  is traditionally served warm with fresh grated mature coconut meat and brown sugar or with latik
+                  (caramelized coconut cream) and tsokolate (native chocolate).
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Sumang-Bulagta/6" target="_blank" rel="noopener noreferrer">Official Pulilan Tourism Page: Sumang Bulagta Details &rarr;</a></li>
-                  <li><a href="https://www.instagram.com/p/CRu3fE_j063/?stkn=MTdtd2R5cTVyeGswcw==" target="_blank" rel="noopener noreferrer">Instagram Culinary Feature on Sumang Bulagta &rarr;</a></li>
-                  <li><a href="https://www.vibesgroupuk.com/destinations/asia/philippines/pulilan?utm_source=gemini&hl=hi-IN" target="_blank" rel="noopener noreferrer">Explore Pulilan Delicacies — Vibes Group UK &rarr;</a></li>
-                  <li><a href="https://youtu.be/SxSKqesvXhE?si=gjcIwaoSfL2lZxZt" target="_blank" rel="noopener noreferrer">Suman Bulagta Preparation Video — YouTube &rarr;</a></li>
+                  <li><a href="https://celebrate.pulilan.gov.ph/tourism/Sumang-Bulagta/6" target="_blank"
+                      rel="noopener noreferrer">Official Pulilan Tourism Page: Sumang Bulagta Details &rarr;</a></li>
+                  <li><a href="https://www.instagram.com/p/CRu3fE_j063/?stkn=MTdtd2R5cTVyeGswcw==" target="_blank"
+                      rel="noopener noreferrer">Instagram Culinary Feature on Sumang Bulagta &rarr;</a></li>
+                  <li><a
+                      href="https://www.vibesgroupuk.com/destinations/asia/philippines/pulilan?utm_source=gemini&hl=hi-IN"
+                      target="_blank" rel="noopener noreferrer">Explore Pulilan Delicacies — Vibes Group UK &rarr;</a>
+                  </li>
+                  <li><a href="https://youtu.be/SxSKqesvXhE?si=gjcIwaoSfL2lZxZt" target="_blank"
+                      rel="noopener noreferrer">Suman Bulagta Preparation Video — YouTube &rarr;</a></li>
                 </ul>
               </div>
 
@@ -1031,7 +1224,10 @@
             <div class="content-block">
               <h3 class="narrative-heading">Description</h3>
               <p class="lead-narrative">
-                Fried Itik is a spicy, deep-fried native duck dish. It is known for its crispy skin and tender meat, giving off a savory spice aroma. Its taste is so rich that it easily matches a good chicken fried dish. A mouth-watering local delicacy made from native Philippine duck (itik), which is marinated in an acidic brine of spices, cooked till tender, and then deep fried till crispy golden brown.
+                Fried Itik is a spicy, deep-fried native duck dish. It is known for its crispy skin and tender meat,
+                giving off a savory spice aroma. Its taste is so rich that it easily matches a good chicken fried dish.
+                A mouth-watering local delicacy made from native Philippine duck (itik), which is marinated in an acidic
+                brine of spices, cooked till tender, and then deep fried till crispy golden brown.
               </p>
             </div>
 
@@ -1045,26 +1241,28 @@
 
           <div class="chapter-exhibit-col">
             <div class="artifact-card">
-              <div class="artifact-photo-stage" role="button" tabindex="0"
-                data-lightbox-src="assets/Fried itik.jpg"
-                data-lightbox-tag="HERITAGE DELICACY"
-                data-lightbox-title="Dentong's Fried Itik"
+              <div class="artifact-photo-stage" role="button" tabindex="0" data-lightbox-src="assets/Fried itik.jpg"
+                data-lightbox-tag="HERITAGE DELICACY" data-lightbox-title="Dentong's Fried Itik"
                 data-lightbox-location="Pulilan, Bulacan"
                 data-lightbox-desc="A beloved local delicacy featuring native duck (itik) from the duck farms along the Angat River. The duck is marinated in garlic-vinegar brine, boiled until tender, then deep-fried to a golden crisp. A signature taste of Pulilan's agrarian heritage."
-                data-lightbox-gallery='["assets/Fried itik.jpg"]'>
-                <img src="assets/Fried itik.jpg" alt="Dentong's Fried Itik, native duck delicacy from Pulilan" class="active-artifact-img" id="artifact-img-itik">
+                data-lightbox-gallery='["assets/Fried itik.jpg","assets/Fried itik Other Pic.jpg","assets/Fried itik othe pic 2.jpg"]'>
+                <img src="assets/Fried itik.jpg" alt="Dentong's Fried Itik, native duck delicacy from Pulilan"
+                  class="active-artifact-img" id="artifact-img-itik">
                 <div class="artifact-tag-badge">HERITAGE DELICACY</div>
                 <button class="artifact-expand-btn" aria-label="Expand image" tabindex="-1">&#10529; Expand</button>
               </div>
 
               <div class="artifact-switcher-row">
-                <button class="switcher-thumb active" data-target="artifact-img-itik" data-src="assets/Fried itik.jpg" aria-label="Photo 1: Crispy Golden Fried Itik">
+                <button class="switcher-thumb active" data-target="artifact-img-itik" data-src="assets/Fried itik.jpg"
+                  aria-label="Photo 1: Crispy Golden Fried Itik">
                   <img src="assets/Fried itik.jpg" alt="Fried itik">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-itik" data-src="assets/Fried itik Other Pic.jpg" aria-label="Photo 2: Plated Duck Specialty">
+                <button class="switcher-thumb" data-target="artifact-img-itik"
+                  data-src="assets/Fried itik Other Pic.jpg" aria-label="Photo 2: Plated Duck Specialty">
                   <img src="assets/Fried itik Other Pic.jpg" alt="Plated duck">
                 </button>
-                <button class="switcher-thumb" data-target="artifact-img-itik" data-src="assets/Fried itik othe pic 2.jpg" aria-label="Photo 3: Fried Itik Station">
+                <button class="switcher-thumb" data-target="artifact-img-itik"
+                  data-src="assets/Fried itik othe pic 2.jpg" aria-label="Photo 3: Fried Itik Station">
                   <img src="assets/Fried itik othe pic 2.jpg" alt="Food station">
                 </button>
               </div>
@@ -1089,34 +1287,58 @@
               <div class="dossier-text-block">
                 <h4>Main Ingredients</h4>
                 <p>
-                  Whole dressed native duck (itik) is the key ingredient. For the boiling process, various aromatics like garlic, onion, ginger, and celery are used to remove the gamey taste of the meat. Black peppercorns, bay leaves, salt, and vinegar are added to the pre-cooking brine. The process of frying includes cooking oil. It is also accompanied by spiced vinegar or liver gravy (sarsa).
+                  Whole dressed native duck (itik) is the key ingredient. For the boiling process, various aromatics
+                  like garlic, onion, ginger, and celery are used to remove the gamey taste of the meat. Black
+                  peppercorns, bay leaves, salt, and vinegar are added to the pre-cooking brine. The process of frying
+                  includes cooking oil. It is also accompanied by spiced vinegar or liver gravy (sarsa).
                 </p>
 
                 <h4 style="margin-top:20px;">How/Where It Is Commonly Prepared or Served</h4>
                 <p>
-                  First, the duck is boiled in strongly spiced broth in order to tenderize its meat and to remove the gamey taste. After draining and drying, it is fried in the cooking oil and made extremely crispy. It is served hot and chopped into pieces at local carinderias and specialty restaurants and is usually eaten with warm rice or drinks.
+                  First, the duck is boiled in strongly spiced broth in order to tenderize its meat and to remove the
+                  gamey taste. After draining and drying, it is fried in the cooking oil and made extremely crispy. It
+                  is served hot and chopped into pieces at local carinderias and specialty restaurants and is usually
+                  eaten with warm rice or drinks.
                 </p>
 
                 <h4 style="margin-top:20px;">Connection to Pulilan</h4>
                 <p>
-                  Pulilan's proximity to the Angat River and irrigated rice fields created ideal conditions for duck farming (pag-iitik). The ducks were used for balut and salted eggs and old ducks were reused by Pulilan residents for this dish. Roadside cooks transformed the agricultural byproduct into a special local treat.
+                  Pulilan's proximity to the Angat River and irrigated rice fields created ideal conditions for duck
+                  farming (pag-iitik). The ducks were used for balut and salted eggs and old ducks were reused by
+                  Pulilan residents for this dish. Roadside cooks transformed the agricultural byproduct into a special
+                  local treat.
                 </p>
 
                 <h4 style="margin-top:20px;">Cultural/Local Significance</h4>
                 <p>
-                  The Fried Itik is a testament to the ingenuity of Bulakenyo cooking which turned farm-raised domesticated poultry into a much loved local delicacy. Through many years of roadside vendors selling itik stalls and impromptu dining places along the national roads, Pulilan became a stop-over for travelers in search of local cuisine, cementing its status as an important part of Bulakan's culinary culture and popular pulutan (beer companion). It is the perfect example of resourcefulness of Bulakenyo cuisine. Nowadays, Fried Itik became the signature savory dish of Pulilan, drawing many tourists.
+                  The Fried Itik is a testament to the ingenuity of Bulakenyo cooking which turned farm-raised
+                  domesticated poultry into a much loved local delicacy. Through many years of roadside vendors selling
+                  itik stalls and impromptu dining places along the national roads, Pulilan became a stop-over for
+                  travelers in search of local cuisine, cementing its status as an important part of Bulakan's culinary
+                  culture and popular pulutan (beer companion). It is the perfect example of resourcefulness of
+                  Bulakenyo cuisine. Nowadays, Fried Itik became the signature savory dish of Pulilan, drawing many
+                  tourists.
                 </p>
 
                 <h4 style="margin-top:20px;">Interesting Facts</h4>
                 <p>
-                  The trick to the game-free taste of Fried Itik is a laborious procedure whereby the duck is first boiled in a combination of vinegar, garlic, bay leaves, peppercorn, and spices to soften the connective tissues and eliminate any smell, after which it is fried till crispy on the outside. It is usually accompanied by the signature local sauce – either a hot and sour vinegar and garlic dip or a liver-based sauce.
+                  The trick to the game-free taste of Fried Itik is a laborious procedure whereby the duck is first
+                  boiled in a combination of vinegar, garlic, bay leaves, peppercorn, and spices to soften the
+                  connective tissues and eliminate any smell, after which it is fried till crispy on the outside. It is
+                  usually accompanied by the signature local sauce – either a hot and sour vinegar and garlic dip or a
+                  liver-based sauce.
                 </p>
 
                 <h4 style="margin-top:20px;">References</h4>
                 <ul class="dossier-ref-list">
-                  <li><a href="https://www.facebook.com/p/Dentongs-Fried-Itik-100064170966596/" target="_blank" rel="noopener noreferrer">Dentong's Fried Itik — Official Facebook Page &rarr;</a></li>
-                  <li><a href="https://magtalasitikanfarm.wordpress.com/2018/07/31/fried-itik-duck-recipe/?hl=hi-IN" target="_blank" rel="noopener noreferrer">Magtalas Itikan Farm Duck Recipe &rarr;</a></li>
-                  <li><a href="https://lifestyle.inquirer.net/225847/lethal-chicharon-exotic-fried-itik-your-food-guide-to-bulacan/?utm_source=gemini&hl=hi-IN" target="_blank" rel="noopener noreferrer">Inquirer: Lethal chicharon, exotic fried itik — food guide to Bulacan &rarr;</a></li>
+                  <li><a href="https://www.facebook.com/p/Dentongs-Fried-Itik-100064170966596/" target="_blank"
+                      rel="noopener noreferrer">Dentong's Fried Itik — Official Facebook Page &rarr;</a></li>
+                  <li><a href="https://magtalasitikanfarm.wordpress.com/2018/07/31/fried-itik-duck-recipe/?hl=hi-IN"
+                      target="_blank" rel="noopener noreferrer">Magtalas Itikan Farm Duck Recipe &rarr;</a></li>
+                  <li><a
+                      href="https://lifestyle.inquirer.net/225847/lethal-chicharon-exotic-fried-itik-your-food-guide-to-bulacan/?utm_source=gemini&hl=hi-IN"
+                      target="_blank" rel="noopener noreferrer">Inquirer: Lethal chicharon, exotic fried itik — food
+                      guide to Bulacan &rarr;</a></li>
                 </ul>
               </div>
 
@@ -1133,12 +1355,332 @@
 
       </div>
     </section>
+
+    <hr class="museum-separator">
+
+    <!-- ==========================================================================
+         CARTOGRAPHIC SURVEY: Interactive Pulilan Heritage Map & Cultural Trail
+         (Placed at the culmination of the monograph chapters)
+         ========================================================================== -->
+    <section class="heritage-map-section" id="heritage-map">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="map-section-header">
+          <div class="map-badge-tag">CARTOGRAPHIC SURVEY &amp; CULTURAL WAYFINDING</div>
+          <h2 class="map-section-title">Interactive Pulilan <em>Heritage Map</em></h2>
+          <p class="map-section-desc">
+            Explore the spatial layout and geographical relationship of all 8 heritage sites across Pulilan, Bulacan. 
+            Notice that the <strong>Diocesan Shrine of San Isidro Labrador</strong>, the historic <strong>Spanish Colonial Cemetery (Campo Santo)</strong>, 
+            and the <strong>Kneeling Carabao Festival plaza</strong> are all anchored within the exact same historic Poblacion church compound.
+          </p>
+        </div>
+
+        <!-- Zone / Cluster Filter Nav -->
+        <div class="map-cluster-nav" role="tablist" aria-label="Heritage Zone Filters">
+          <button class="map-cluster-pill active" data-cluster="all" role="tab" aria-selected="true">
+            <span class="cluster-dot"></span> All Sites (8)
+          </button>
+          <button class="map-cluster-pill" data-cluster="poblacion" role="tab" aria-selected="false">
+            <span class="cluster-dot dot-poblacion"></span> Poblacion Core (5)
+          </button>
+          <button class="map-cluster-pill" data-cluster="inaon" role="tab" aria-selected="false">
+            <span class="cluster-dot dot-inaon"></span> Inaon Agri-Equestrian (2)
+          </button>
+          <button class="map-cluster-pill" data-cluster="river" role="tab" aria-selected="false">
+            <span class="cluster-dot dot-river"></span> Angat Riverbank (1)
+          </button>
+        </div>
+
+        <!-- 2-Column Responsive Cartographic Layout -->
+        <div class="heritage-map-layout">
+          <!-- Left Column: Interactive Location Cards List -->
+          <div class="map-sites-list" id="map-sites-list" role="region" aria-label="Heritage Sites Directory">
+            
+            <!-- Site 01: San Isidro Labrador Church -->
+            <div class="map-site-card active" data-site="1" data-cluster="poblacion"
+                 data-title="Diocesan Shrine &amp; Parish of San Isidro Labrador"
+                 data-location="National Road, Poblacion, Pulilan, Bulacan"
+                 data-query="Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan"
+                 data-badge="ROOM 01 · POBLACION CORE"
+                 data-img="assets/San Isidro Church.jpg"
+                 data-chapter="#church"
+                 data-zoom="17"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/San Isidro Church.jpg" alt="San Isidro Church thumbnail" loading="lazy">
+                <span class="site-card-num">01</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Poblacion Core · National Road</div>
+                <h3 class="site-card-title">San Isidro Labrador Church</h3>
+                <p class="site-card-desc">Historic 18th-century stone church and diocesan shrine; spiritual center of Pulilan.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#church" class="site-chapter-link" title="Jump to room 01">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 02: Pulong Kabyawan -->
+            <div class="map-site-card" data-site="2" data-cluster="inaon"
+                 data-title="Pulong Kabyawan (Carabao Mills)"
+                 data-location="Barangay Inaon, Pulilan, Bulacan"
+                 data-query="Pulong+Kabyawan,+Inaon,+Pulilan,+Bulacan"
+                 data-badge="ROOM 02 · INAON AGRI CLUSTER"
+                 data-img="assets/PulongKabyawan.jpg"
+                 data-chapter="#pulong-kabyawan"
+                 data-zoom="15"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/PulongKabyawan.jpg" alt="Pulong Kabyawan thumbnail" loading="lazy">
+                <span class="site-card-num">02</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Barangay Inaon · Agri-Heritage</div>
+                <h3 class="site-card-title">Pulong Kabyawan</h3>
+                <p class="site-card-desc">Lush rural estate preserving historic sugarcane carabao-mill heritage and Kape't Bahay.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#pulong-kabyawan" class="site-chapter-link" title="Jump to room 02">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 03: Campo Santo (Inside the Church Compound) -->
+            <div class="map-site-card" data-site="3" data-cluster="poblacion"
+                 data-title="Spanish Colonial Era Cemetery (Campo Santo)"
+                 data-location="San Isidro Labrador Church Compound, Poblacion, Pulilan"
+                 data-query="Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan"
+                 data-badge="ROOM 03 · CHURCH COMPOUND"
+                 data-img="assets/Spanish Colonial Era Cemetery.jpg"
+                 data-chapter="#campo-santo"
+                 data-zoom="17"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/Spanish Colonial Era Cemetery.jpg" alt="Campo Santo thumbnail" loading="lazy">
+                <span class="site-card-num">03</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Poblacion Core · Church Compound</div>
+                <h3 class="site-card-title">Spanish Colonial Cemetery</h3>
+                <p class="site-card-desc">Historic Campo Santo located directly within the San Isidro Church compound with an ornate 3-level arch.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint" style="color:var(--accent-terracotta);">⛪ Located in the church compound</span>
+                  <a href="#campo-santo" class="site-chapter-link" title="Jump to room 03">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 04: The North Polo Club -->
+            <div class="map-site-card" data-site="4" data-cluster="inaon"
+                 data-title="The North Polo Club (NPC)"
+                 data-location="Big Ben Farm, Pulilan, Bulacan"
+                 data-query="The+North+Polo+Club,+Pulilan,+Bulacan"
+                 data-badge="ROOM 04 · INAON EQUESTRIAN"
+                 data-img="assets/North Polo Club.jpg"
+                 data-chapter="#north-polo-club"
+                 data-zoom="15"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/North Polo Club.jpg" alt="North Polo Club thumbnail" loading="lazy">
+                <span class="site-card-num">04</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Big Ben Farm · Equestrian Estate</div>
+                <h3 class="site-card-title">The North Polo Club</h3>
+                <p class="site-card-desc">26-hectare premier polo facility and equestrian club attracting nationwide tournaments.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#north-polo-club" class="site-chapter-link" title="Jump to room 04">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 05: Casa San Francisco -->
+            <div class="map-site-card" data-site="5" data-cluster="poblacion"
+                 data-title="Casa San Francisco (Laxamana House)"
+                 data-location="Poblacion, Pulilan, Bulacan"
+                 data-query="Casa+San+Francisco,+Poblacion,+Pulilan,+Bulacan"
+                 data-badge="ROOM 05 · POBLACION CORE"
+                 data-img="assets/Casa San Francisco.jpg"
+                 data-chapter="#casa-san-francisco"
+                 data-zoom="16"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/Casa San Francisco.jpg" alt="Casa San Francisco thumbnail" loading="lazy">
+                <span class="site-card-num">05</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Poblacion Core · Heritage District</div>
+                <h3 class="site-card-title">Casa San Francisco (1929)</h3>
+                <p class="site-card-desc">Well-preserved 1929 Bahay na Bato showcasing heirloom architecture, capiz windows, and local art.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#casa-san-francisco" class="site-chapter-link" title="Jump to room 05">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 06: Kneeling Carabao Festival Grounds -->
+            <div class="map-site-card" data-site="6" data-cluster="poblacion"
+                 data-title="The Kneeling Carabao Festival Grounds"
+                 data-location="Church Plaza &amp; Frontage, San Isidro Labrador Church, Poblacion"
+                 data-query="Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan"
+                 data-badge="ROOM 06 · CHURCH PLAZA"
+                 data-img="assets/Kneeling Carabao Festival.jpg"
+                 data-chapter="#festival"
+                 data-zoom="17"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/Kneeling Carabao Festival.jpg" alt="Festival grounds thumbnail" loading="lazy">
+                <span class="site-card-num">06</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Poblacion Core · Church Plaza &amp; Street</div>
+                <h3 class="site-card-title">Kneeling Carabao Festival</h3>
+                <p class="site-card-desc">The sacred parade grounds in front of San Isidro Church where carabaos genuflect every May 14.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint" style="color:var(--accent-terracotta);">⛪ Directly in front of the church</span>
+                  <a href="#festival" class="site-chapter-link" title="Jump to room 06">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 07: Sumang Bulagta -->
+            <div class="map-site-card" data-site="7" data-cluster="poblacion"
+                 data-title="Sumang Bulagta (Town Market &amp; Stalls)"
+                 data-location="Poblacion Public Market, Pulilan, Bulacan"
+                 data-query="Pulilan+Public+Market,+Pulilan,+Bulacan"
+                 data-badge="ROOM 07 · HEIRLOOM KAKANIN"
+                 data-img="assets/Sumang Bulagta.jpg"
+                 data-chapter="#sumang-bulagta"
+                 data-zoom="16"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/Sumang Bulagta.jpg" alt="Sumang Bulagta thumbnail" loading="lazy">
+                <span class="site-card-num">07</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Poblacion Core · Public Market</div>
+                <h3 class="site-card-title">Sumang Bulagta (Kakanin)</h3>
+                <p class="site-card-desc">Pulilan's signature flat sticky rice delicacy served fresh at morning markets and town fiestas.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#sumang-bulagta" class="site-chapter-link" title="Jump to room 07">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site 08: Dentong's Fried Itik -->
+            <div class="map-site-card" data-site="8" data-cluster="river"
+                 data-title="Dentong's Fried Itik"
+                 data-location="National Highway / Angat River Corridor, Pulilan, Bulacan"
+                 data-query="Dentongs+Fried+Itik,+Pulilan,+Bulacan"
+                 data-badge="ROOM 08 · RIVERSIDE FOODWAY"
+                 data-img="assets/Fried itik.jpg"
+                 data-chapter="#fried-itik"
+                 data-zoom="15"
+                 role="button" tabindex="0">
+              <div class="site-card-thumb">
+                <img src="assets/Fried itik.jpg" alt="Dentong's Fried Itik thumbnail" loading="lazy">
+                <span class="site-card-num">08</span>
+              </div>
+              <div class="site-card-body">
+                <div class="site-zone-tag">Angat River Corridor · Highway</div>
+                <h3 class="site-card-title">Dentong's Fried Itik</h3>
+                <p class="site-card-desc">Iconic roadside dining landmark rooted in the native duck-farming heritage of the Angat River.</p>
+                <div class="site-card-footer">
+                  <span class="site-nav-hint">📍 Click to locate on map</span>
+                  <a href="#fried-itik" class="site-chapter-link" title="Jump to room 08">Chapter &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Google Maps Frame + Live Pin Info Panel -->
+          <div class="map-display-col">
+            <div class="map-canvas-card">
+              <!-- Top bar of map card -->
+              <div class="map-canvas-header">
+                <div class="map-live-tag">
+                  <span class="live-indicator-dot"></span>
+                  <span id="map-header-location-name">Diocesan Shrine of San Isidro Labrador — Poblacion</span>
+                </div>
+                <div class="map-header-actions">
+                  <button class="btn-map-control" id="btn-reset-town-map" title="View whole town of Pulilan">
+                    ⤢ Town Overview
+                  </button>
+                  <a id="btn-open-external-gmaps" href="https://www.google.com/maps/search/?api=1&query=Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan" target="_blank" rel="noopener noreferrer" class="btn-map-control btn-map-external" title="Open full view in Google Maps App">
+                    Google Maps ↗
+                  </a>
+                </div>
+              </div>
+
+              <!-- Google Map Embed Iframe -->
+              <div class="map-iframe-wrapper">
+                <iframe id="heritage-google-map"
+                  src="https://maps.google.com/maps?q=Diocesan+Shrine+and+Parish+of+San+Isidro+Labrador,+Poblacion,+Pulilan,+Bulacan&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                  width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Google Maps: Diocesan Shrine and Parish of San Isidro Labrador, Pulilan Bulacan">
+                </iframe>
+              </div>
+
+              <!-- Floating Active Spot Detail Ribbon -->
+              <div class="map-spot-ribbon" id="map-spot-ribbon">
+                <div class="ribbon-thumb">
+                  <img id="ribbon-img" src="assets/San Isidro Church.jpg" alt="Selected site preview">
+                </div>
+                <div class="ribbon-details">
+                  <span class="ribbon-badge" id="ribbon-badge">ROOM 01 · POBLACION CORE</span>
+                  <h4 class="ribbon-title" id="ribbon-title">Diocesan Shrine &amp; Parish of San Isidro Labrador</h4>
+                  <p class="ribbon-meta" id="ribbon-location">National Road, Poblacion, Pulilan, Bulacan</p>
+                </div>
+                <div class="ribbon-cta">
+                  <a href="#church" id="ribbon-chapter-btn" class="btn-ribbon-chapter">Read Chapter &darr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Schematic Spatial Wayfinding Bar -->
+            <div class="cartographic-trail-guide">
+              <div class="trail-guide-header">
+                <span class="trail-guide-tag">THE THREE CULTURAL CLUSTERS OF PULILAN</span>
+              </div>
+              <div class="trail-guide-nodes">
+                <div class="trail-node active" data-filter="poblacion">
+                  <span class="node-badge">ZONE 1</span>
+                  <strong>Poblacion Core</strong>
+                  <span>Church &amp; Campo Santo (Same Compound) · Casa San Francisco · Suman</span>
+                </div>
+                <div class="trail-connector">&xrarr;</div>
+                <div class="trail-node" data-filter="inaon">
+                  <span class="node-badge">ZONE 2</span>
+                  <strong>Inaon Fields</strong>
+                  <span>Pulong Kabyawan · The North Polo Club</span>
+                </div>
+                <div class="trail-connector">&xrarr;</div>
+                <div class="trail-node" data-filter="river">
+                  <span class="node-badge">ZONE 3</span>
+                  <strong>Angat Riverway</strong>
+                  <span>Dentong's Fried Itik · Duck Farm Corridor</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- ==========================================================================
        Image Lightbox Modal (Click-to-Expand with Detail Side Panel)
        ========================================================================== -->
-  <div class="img-lightbox-backdrop" id="img-lightbox" role="dialog" aria-modal="true" aria-label="Image Viewer" aria-hidden="true">
+  <div class="img-lightbox-backdrop" id="img-lightbox" role="dialog" aria-modal="true" aria-label="Image Viewer"
+    aria-hidden="true">
     <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close image viewer">✕</button>
     <div class="lightbox-inner">
       <!-- Left: Expanded Image -->
@@ -1149,6 +1691,7 @@
           <span class="lightbox-img-counter" id="lightbox-img-counter">1 / 1</span>
           <button class="lightbox-nav-btn" id="lightbox-next" aria-label="Next image">→</button>
         </div>
+        <div class="lightbox-hint">Use ← → keys or swipe to navigate · Esc to close</div>
       </div>
       <!-- Right: Details -->
       <div class="lightbox-detail-side">
@@ -1157,7 +1700,10 @@
         <p class="lightbox-location" id="lightbox-location"></p>
         <div class="lightbox-divider"></div>
         <p class="lightbox-desc" id="lightbox-desc"></p>
-        <div class="lightbox-thumb-strip" id="lightbox-thumb-strip"></div>
+        <div class="lightbox-gallery-section">
+          <span class="lightbox-gallery-heading">EXHIBIT PHOTOS</span>
+          <div class="lightbox-thumb-strip" id="lightbox-thumb-strip"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1171,13 +1717,15 @@
         <div class="footer-about">
           <div class="footer-brand-mark">Bayan ng Pulilan</div>
           <p class="footer-bio">
-            A cultural monograph dedicated to the living agrarian devotion, 18th-century stone masonry, community eco-preservation, and heirloom foodways of Pulilan, Bulacan.
+            A cultural monograph dedicated to the living agrarian devotion, 18th-century stone masonry, community
+            eco-preservation, and heirloom foodways of Pulilan, Bulacan.
           </p>
         </div>
 
         <div class="footer-nav-col">
           <h4>Exhibition Rooms</h4>
           <ul>
+            <li><a href="#heritage-map" style="color:var(--accent-terracotta); font-weight:600;">🗺 Interactive Heritage Map</a></li>
             <li><a href="#church">01 San Isidro Labrador Church</a></li>
             <li><a href="#pulong-kabyawan">02 Pulong Kabyawan</a></li>
             <li><a href="#campo-santo">03 Spanish Colonial Cemetery</a></li>
@@ -1212,4 +1760,5 @@
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
