@@ -1,0 +1,28 @@
+/* Supplementary component styles - cleanly scoped */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-line);
+  padding: 24px 32px;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  z-index: 99;
+}
+
+.mobile-nav-drawer.open {
+  display: flex;
+}
+
+.mobile-nav-drawer a {
+  text-decoration: none;
+  color: var(--text-ink);
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
