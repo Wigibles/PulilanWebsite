@@ -67,8 +67,8 @@ Seamlessly embedded documentary media with intelligent viewing controls:
 
 ---
 
-### 🎵 3. Ambient Heritage Soundscape (*Bagani*)
-* Features subtle acoustic background music using the track **Bagani**.
+### 🎵 3. Ambient Heritage Soundscape (*Viva San Isidro*)
+* Features subtle acoustic background music using the official theme song **Viva San Isidro** (composed by Jon Meer Vera Perez).
 * **Smart Audio Ducking**: The ambient sound automatically mutes whenever a user starts playing any video documentary and seamlessly resumes once the video is paused or stopped.
 * Includes a masthead sound toggle with live pulsating audio equalizer wave visualization.
 
@@ -109,7 +109,7 @@ PulilanWebsite/
 ├── favicon.svg                 # Scalable vector logo icon
 │
 ├── assets/                     # Curated high-resolution imagery & audio
-│   ├── Bagani.mp3              # Ambient background soundscape track
+│   ├── VivaSanIsidro.mp3       # Ambient background soundscape track (Viva San Isidro)
 │   ├── Carabao.png             # Hero transparent carabao motif
 │   ├── pulilan-seal.png        # Official Municipal Seal of Pulilan
 │   ├── San Isidro Church.jpg   # Diocesan Shrine exterior photograph
@@ -180,8 +180,7 @@ Content within this monograph has been gathered from official government archive
 * **Philippine Daily Inquirer**: *Pulilan, Bulacan Leads the Way in Heritage-Based Sustainable Development*
 * **Manila Bulletin / Tempo**: *Kneeling Carabaos to Wow Pulilan Fiesta Crowds*
 * **Video Documentary**: *Tagapagkwento Film Productions* (Coverage of Kneeling Carabao Festival 2024)
-* **Hymn Composition**: *Viva San Isidro* composed by Jon Meer Vera Perez (RankOne)
-* **Musical Monograph**: *Bagani* performed by Anthony Castillo & Pinopela
+* **Hymn Composition & Ambient Track**: *Viva San Isidro* composed by Jon Meer Vera Perez (Official Theme Song of the Annual Kneeling Carabao Festival)
 
 ---
 

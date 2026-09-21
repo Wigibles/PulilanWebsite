@@ -115,13 +115,13 @@ function initSideTrackerScrollSpy() {
 }
 
 /* ==========================================================================
-   2. Subtle Ambient Background Music Controller (Bagani.mp3)
+   2. Subtle Ambient Background Music Controller (VivaSanIsidro.mp3)
    ========================================================================== */
 
 function initAmbientAudio() {
   const soundBtn = document.getElementById('btn-ambient-sound');
   const soundLabel = document.getElementById('sound-label');
-  const audioElement = document.getElementById('ambient-audio-player') || new Audio('assets/Bagani.mp3');
+  const audioElement = document.getElementById('ambient-audio-player') || new Audio('assets/VivaSanIsidro.mp3');
 
   if (!soundBtn) return;
 
@@ -161,7 +161,7 @@ function initAmbientAudio() {
     if (playing) {
       soundBtn.classList.add('playing');
       soundBtn.setAttribute('aria-pressed', 'true');
-      if (soundLabel) soundLabel.textContent = 'Bagani';
+      if (soundLabel) soundLabel.textContent = 'Viva San Isidro';
     } else {
       soundBtn.classList.remove('playing');
       soundBtn.setAttribute('aria-pressed', 'false');
